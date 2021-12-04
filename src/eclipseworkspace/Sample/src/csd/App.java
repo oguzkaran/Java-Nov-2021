@@ -1,23 +1,30 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Klavyeden int türden değerler okunması
+	Akış return deyimine geldiğinde önce return deyimine ilişkin ifade hesaplanır, elde edilen değere geri dönülür 
+	
+		int temp = val * val;
+	
+		x = temp * 3;
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)
-	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
+	{		
+		int x;		
 		
-		System.out.print("Birinci sayı giriniz:");
-		int a = Integer.parseInt(kb.nextLine());
+		x = Sample.foo() * 3;
 		
-		System.out.print("İkinci sayı giriniz:");
-		int b = Integer.parseInt(kb.nextLine());
-		
-		int total = a + b;
-		
-		System.out.println(total);		
+		System.out.println(x);
 	}
 }
 
-
+class Sample {
+	public static int foo()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		System.out.print("Bir sayı giriniz:");
+		int val = Integer.parseInt(kb.nextLine());		
+		
+		return val * val;		
+	}
+}
