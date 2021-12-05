@@ -1,17 +1,17 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	printf metodunda sayının noktadan sonraki basamak değerlerinin kaç tane gösterileceği % karakterinden sonra .(nokta)
-	ve sayı ile belirlenebilir. Sayının gösterilmeyen basamak değerleri bilimsel olarak yuvarlanır (round). 
+	format metodu, printf ile tamamen aynı işi yapar
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)
-	{		
-		java.util.Scanner kb = new java.util.Scanner(System.in);		
-		System.out.print("Bir sayı giriniz?");		
-		double val = Double.parseDouble(kb.nextLine());		
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
 		
-		System.out.printf("val = %.10f%n", val);		
-		System.out.println("Tekrar yapıyor musunuz?");
+		System.out.print("Oran yüzde değerini giriniz:");
+		int ratio = Integer.parseInt(kb.nextLine());
+		
+		
+		System.out.format("Oran:%%%d%n", ratio);
 	}
 }
