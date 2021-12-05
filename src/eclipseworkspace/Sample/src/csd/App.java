@@ -1,47 +1,17 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Yukarıdaki senaryoda kodun aşağıdaki gibi yazılması daha iyi bir tekniktir	 
+	printf metodunda sayının noktadan sonraki basamak değerlerinin kaç tane gösterileceği % karakterinden sonra .(nokta)
+	ve sayı ile belirlenebilir. Sayının gösterilmeyen basamak değerleri bilimsel olarak yuvarlanır (round). 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)
-	{
-		CalculateTotalApp.run();
-	}
-}
-
-
-class CalculateTotalApp {
-	public static void run()
-	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
+	{		
+		java.util.Scanner kb = new java.util.Scanner(System.in);		
+		System.out.print("Bir sayı giriniz?");		
+		double val = Double.parseDouble(kb.nextLine());		
 		
-		System.out.print("Birinci sayıyı giriniz:");
-		int a = Integer.parseInt(kb.nextLine());	
-
-		System.out.print("İkinci sayıyı giriniz:");
-		int b = Integer.parseInt(kb.nextLine());	
-		
-		int total = NumberUtil.add(a, b); 
-		
-		Util.display(total);
-		
-		////... (a ve b değişkenlerinin değerleri değiştirilmiyor varsayalım)
-		
-		Util.display(total);
-	}
-}
-
-class Util {
-	public static void display(int a)
-	{
-		System.out.println(a);		
-	}
-}
-
-class NumberUtil {
-	public static int add(int a, int b)
-	{
-		return a + b;
+		System.out.printf("val = %.10f%n", val);		
+		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
