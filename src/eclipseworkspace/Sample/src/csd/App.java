@@ -1,17 +1,13 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	format metodu, printf ile tamamen aynı işi yapar
+	Math sınıfının PI ve E elemanları 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)
-	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		
-		System.out.print("Oran yüzde değerini giriniz:");
-		int ratio = Integer.parseInt(kb.nextLine());
-		
-		
-		System.out.format("Oran:%%%d%n", ratio);
+	{	
+		System.out.println(Math.PI);
+		System.out.println(Math.E);
 	}
 }
+
