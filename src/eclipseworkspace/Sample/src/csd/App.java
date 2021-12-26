@@ -1,37 +1,31 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Bileşik deyim
+	boolean türden geri dönüş değeri olan bir metodun if deyiminin koşul ifadesinde çağrılması
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
-	public static void main(String [] args)
+	public static void main(String [] args) 
 	{	
-		int a = 10, b = 20;;;;;;;;;;;;	//Bildirim deyimi	
+		java.util.Scanner kb = new java.util.Scanner(System.in);		
+		System.out.print("Bir sayı giriniz:");
+		int val = Integer.parseInt(kb.nextLine());
 		
-		{ //Bileşik deyim
-			++a; //basit deyim
-			b--; //basit deyim
-			Sample.foo(); //basit deyim
+		if (!NumberUtil.isEven(val))
+			System.out.println("Tek");
+		else
+			System.out.println("Çift");
 			
-			{
-				System.out.printf("a = %d%n", a);
-				System.out.printf("b = %d%n", b);
-			}
-			//...
-		}
-		;;;;;;;;;;;;;;;
-		
-		; //boş deyim
-		
-		;
-		
-		;
+		System.out.println("Tekrar yapıyor musunuz?");		
 	}
 }
 
-class Sample {
-	public static void foo()
+
+class NumberUtil {
+	public static boolean isEven(int val)
 	{
-		System.out.println("foo");		
+		return val % 2 == 0;
 	}
+	
+	//...
 }
+
