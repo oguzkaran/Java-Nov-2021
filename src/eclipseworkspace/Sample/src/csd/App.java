@@ -1,43 +1,41 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Paremtresi ile aldığı bir sayının Armstrong sayısı olup olmadığını test eden isArmstrong metodunu
-	yazınız ve aşağıdaki kod ile test ediniz:
-	Açıklamalar: 
-		- Pozitif bir sayının her basamağının basamak sayıncı kuvvetleri toplandığında sonuç sayının kendisine eşitse
-		bu sayıya Armstrong sayısı denir
-			153 -> 1 * 1 * 1 + 5 * 5 * 5 + 3 * 3 * 3 = 153 				
-		 - Kuvvet alma işlemi için yukarıda yazılmış pow metodunu kullanınız		 		 
+	Yukarıda yazılan isPrime metotlarının basit bir karşılaştırması
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{
-		IsArmstrongTest.run();			
+		IsPrimeTest.run();			
 	}
 }
 
-class IsArmstrongTest {	
+class IsPrimeTest {	
 	public static void run()
-	{
-		for (int n = 0; n <= 9999999; ++n)
-			if (NumberUtil.isArmstrong(n))
-				System.out.println(n);
+	{		
+		System.out.println(NumberUtil.isPrimeSlow(710584055392819667L));		
 	}
 }
 
 class NumberUtil {
-	public static boolean isArmstrong(int val)
+	public static boolean isPrimeSlow(long val)
 	{
-		//TODO:
+		if (val <= 1)
+			return false;
+		
+		long halfVal = val / 2;
+		
+		int count = 0;
+		
+		for (long i = 2; i <= halfVal; ++i) {
+			++count;
+			if (val % i == 0)
+				return false;
+		}
+		
+		System.out.printf("isPrimeSlow:count:%d%n", count);
+		return true;
 	}
 	
-	public static int pow(int a, int b)
-	{
-		int result = 1;
-		
-		while (b-- > 0)
-			result *= a;
-		
-		return result;
-	}
+	
 }
