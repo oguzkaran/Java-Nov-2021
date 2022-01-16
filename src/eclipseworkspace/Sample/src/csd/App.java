@@ -1,24 +1,54 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: 
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir n değeri için n-inci asal sayıyı döndüren getPrime isimli 
+	metodu yazınız ve aşağıdaki kod ile test ediniz.
+	Açıklamalar:	
+		- isPrime metodunun hızlı olan versiyonunu kullanınız
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{
-		IsPrimeTest.run();			
+		GetPrimeTest.run();			
 	}
 }
 
-class IsPrimeTest {	
+class GetPrimeTest {	
 	public static void run()
 	{		
-		System.out.println(NumberUtil.isPrime(1_000_003));				
-		System.out.println(NumberUtil.isPrimeSlow(1_000_003));
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		for (;;) {
+			System.out.print("Bir sayı giriniz:");
+			int n = Integer.parseInt(kb.nextLine());
+			
+			if (n < 1) 
+				break;
+			
+			System.out.printf("%d. asal sayı:%d%n", n, NumberUtil.getPrime(n));			
+		}
+		
+		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
 
 class NumberUtil {
+	public static long getPrime(int n)
+	{
+		int count = 0;
+		long val = 2;
+		
+		for (;;) {
+			if (isPrime(val))
+				++count;
+			
+			if (count == n)
+				return val;
+			
+			++val;
+		}
+	}
+	
 	public static boolean isPrime(long val)
 	{
 		if (val <= 1)
@@ -34,38 +64,15 @@ class NumberUtil {
 			return val == 5;
 		
 		if (val % 7 == 0)
-			return val == 7;
+			return val == 7;	
 		
-		int count = 0;
 		
-		for (long i = 11; i * i <= val; i += 2) {
-			++count;
+		for (long i = 11; i * i <= val; i += 2)		
 			if (val % i == 0)
-				return false;
-		}
-		
-		System.out.printf("isPrime:count:%d%n", count);
+				return false;		
 		
 		return true;							
 	}
 	
-	public static boolean isPrimeSlow(long val)
-	{
-		if (val <= 1)
-			return false;
-		
-		long halfVal = val / 2;
-		
-		int count = 0;
-		
-		for (long i = 2; i <= halfVal; ++i) {
-			++count;
-			if (val % i == 0)
-				return false;
-		}
-		
-		System.out.printf("isPrimeSlow:count:%d%n", count);
-		return true;
-	}
+	
 }
-
