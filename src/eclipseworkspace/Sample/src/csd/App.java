@@ -1,78 +1,28 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir n değeri için n-inci asal sayıyı döndüren getPrime isimli 
-	metodu yazınız ve aşağıdaki kod ile test ediniz.
-	Açıklamalar:	
-		- isPrime metodunun hızlı olan versiyonunu kullanınız
+	continue deyimi döngüyü değil döngünün o anki adımını sonlandırmak için kullanılır. continue deyimi yalnızca 
+	döngü deyimlerinde kullanılabilir. continue deyiminin de etiketli biçimi vardır. Ancak yapısal ve nesne yönelimli
+	programlama teknikleri açısından kullanıması tavsiye edilmez. continue deyiminin etiketsiz biçimi break deyimi kadar
+	sık kullanılmasa da okunabilirliği artırmak amacıyla bazı durumlarda tercih edilebilir. Aşağıdaki örnekte [1, n]
+	arasındaki tek sayılar ekrana yazdırılmıştır. Örnek continue deyiminin çalışma biçimini göstermek için aşağıdaki 
+	biçimde yazılmıştır 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{
-		GetPrimeTest.run();			
-	}
-}
-
-class GetPrimeTest {	
-	public static void run()
-	{		
 		java.util.Scanner kb = new java.util.Scanner(System.in);
+		System.out.print("Bir sayı giriniz:");
+		int n = Integer.parseInt(kb.nextLine());
 		
-		for (;;) {
-			System.out.print("Bir sayı giriniz:");
-			int n = Integer.parseInt(kb.nextLine());
+		for (int i = 1; i <= n; ++i) {
+			if (i % 2 == 0)
+				continue;
 			
-			if (n < 1) 
-				break;
-			
-			System.out.printf("%d. asal sayı:%d%n", n, NumberUtil.getPrime(n));			
+			System.out.printf("%d ", i);
 		}
 		
-		System.out.println("Tekrar yapıyor musunuz?");
+		System.out.println();		
 	}
 }
 
-class NumberUtil {
-	public static long getPrime(int n)
-	{
-		int count = 0;
-		long val = 2;
-		
-		for (;;) {
-			if (isPrime(val))
-				++count;
-			
-			if (count == n)
-				return val;
-			
-			++val;
-		}
-	}
-	
-	public static boolean isPrime(long val)
-	{
-		if (val <= 1)
-			return false;
-		
-		if (val % 2 == 0)
-			return val == 2;
-		
-		if (val % 3 == 0)
-			return val == 3;
-		
-		if (val % 5 == 0)
-			return val == 5;
-		
-		if (val % 7 == 0)
-			return val == 7;	
-		
-		
-		for (long i = 11; i * i <= val; i += 2)		
-			if (val % i == 0)
-				return false;		
-		
-		return true;							
-	}
-	
-	
-}
