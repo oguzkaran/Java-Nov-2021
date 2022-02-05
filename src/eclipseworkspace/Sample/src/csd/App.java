@@ -1,23 +1,43 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Gerçek sayı türünden tamsayı türüne yapılan explicit dönüşüm şu aşamalarla gerçekleşir:
-	- Sayının noktadan sonraki kısmı atılır
-		- Elde edilen değer hedef türün sınırları içerisinde kalıyorsa doğrudan hedef türe atanır
+	Sınıf Çalışması: Parametresi ile aldığı int türden iki sayının "en büyük ortak bölenini" döndüren gcd isimli
+	metodu NumberUtil sınıfı içerisinde yazınız be aşağıdaki kod ile test ediniz.
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
-	{	
-		double a;
-		short b;
-		
-		a = 5_000_000_000.56;
-		b = (short)a;
-		
-		System.out.printf("5000000000 = %d%n", (short)5_000_000_000L);
-		System.out.printf("2147483648 = %d%n", (short)2147483647);
-		System.out.printf("b = %d%n", b);				
+	{
+		GcdTest.run();									
 	}
 }
 
+class GcdTest {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		for (;;) {
+			System.out.print("Birinci sayıyı giriniz:");
+			int a = Integer.parseInt(kb.nextLine());
+			
+			System.out.print("İkinci sayıyı giriniz:");
+			int b = Integer.parseInt(kb.nextLine());
+			
+			int result = NumberUtil.gcd(a, b);
+			
+			System.out.printf("ebob(%d, %d) = %d%n", a, b, result);
+			
+			if (result == 1)
+				break;
+		}
+	}
+}
+
+
+class NumberUtil {
+	public static int gcd(int a, int b)
+	{
+		//TODO:
+	}
+}
 
