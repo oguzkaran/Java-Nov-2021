@@ -1,26 +1,56 @@
-/*----------------------------------------------------------------------------------------------------------------------
-	Yukarıdaki örnek için gerek olmasa da parantez konması okunabilirliği artırır 
+/*----------------------------------------------------------------------------------------------------------------------	
+	1. Aday metotlar: 1, 2, 3, 4, 5, 6
+	2. Uygun metotlar: 3, 4, 5
+	3. En uygun metot: 3			
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		System.out.print("Birinci sayıyı giriniz:");
-		int a = Integer.parseInt(kb.nextLine());
-
-		System.out.print("İkinci sayıyı giriniz:");
-		int b = Integer.parseInt(kb.nextLine());
+		int a = 10;
+		short b = 30;
 		
-		System.out.print("Üçüncü sayıyı giriniz:");
-		int c = Integer.parseInt(kb.nextLine());
-		
-		int max;		
-		
-		max = (a > b) ? (a > c ? a : c) : (b > c ? b : c);
-		
-		System.out.printf("max(%d, %d, %d) = %d%n", a, b, c, max);
+		Sample.foo(a, b);
 	}
 }
+
+class Sample {
+	public static void foo() //1
+	{
+		System.out.println("Sample.foo()");		
+	}
+	
+	public static void foo(int a) //2
+	{
+		System.out.println("Sample.foo(int)");		
+	}
+	
+	public static void foo(int a, int b) //3
+	{
+		System.out.println("Sample.foo(int, int)");		
+	}
+	
+	public static void foo(double a, int b) //4
+	{
+		System.out.println("Sample.foo(double, int)");		
+	}
+	
+	public static void foo(int a, long b) //5
+	{
+		System.out.println("Sample.foo(int, long)");		
+	}
+	
+	public static void foo(int a, char b) //6
+	{
+		System.out.println("Sample.foo(int, char)");		
+	}
+	
+	public static void bar() //7
+	{
+		System.out.println("Sample.bar()");		
+	}
+}
+
+
 
