@@ -1,17 +1,19 @@
 /*----------------------------------------------------------------------------------------------------------------------	
-	1. Aday metotlar: 1, 2, 3, 4, 5, 6
-	2. Uygun metotlar: 3, 4, 5
-	3. En uygun metot: 3			
+		 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{
-		int a = 10;
-		short b = 30;
+		//...
+		{
+			short a = 10;
+			short b = a;		
 		
-		Sample.foo(a, b);
+		
+		}	
+		
 	}
 }
 
@@ -26,19 +28,19 @@ class Sample {
 		System.out.println("Sample.foo(int)");		
 	}
 	
-	public static void foo(int a, int b) //3
+	public static void foo(long a, int b) //3
 	{
-		System.out.println("Sample.foo(int, int)");		
+		System.out.println("Sample.foo(long, int)");		
 	}
 	
-	public static void foo(double a, int b) //4
-	{
-		System.out.println("Sample.foo(double, int)");		
-	}
-	
-	public static void foo(int a, long b) //5
+	public static void foo(int a, long b) //4
 	{
 		System.out.println("Sample.foo(int, long)");		
+	}
+	
+	public static void foo(double a, long b) //5
+	{
+		System.out.println("Sample.foo(double, long)");		
 	}
 	
 	public static void foo(int a, char b) //6
