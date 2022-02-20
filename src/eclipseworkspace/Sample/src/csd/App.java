@@ -1,58 +1,28 @@
 /*----------------------------------------------------------------------------------------------------------------------	
-		 
+	non-static veri elamanlarına nesnesin yaratılması aşamasında default değerler verilir. Default değer türe özgü
+	mantıksal sıfır değeridir. Örneğin int türü için sıfırken, boolean türü için false değerindedir. Default değerler
+	sınıfın veri elemanları final bildirilmişse verilmez. Bu konu ileride ele alınacaktır
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{
-		//...
-		{
-			short a = 10;
-			short b = a;		
+		Sample s, k;
 		
+		s = new Sample();	
+		k = new Sample();
 		
-		}	
+		System.out.printf("s.x = %d%n", s.x);
+		System.out.printf("s.y = %b%n", s.y);
 		
+		System.out.printf("k.x = %d%n", k.x);
+		System.out.printf("k.y = %b%n", k.y);
 	}
 }
 
 class Sample {
-	public static void foo() //1
-	{
-		System.out.println("Sample.foo()");		
-	}
-	
-	public static void foo(int a) //2
-	{
-		System.out.println("Sample.foo(int)");		
-	}
-	
-	public static void foo(long a, int b) //3
-	{
-		System.out.println("Sample.foo(long, int)");		
-	}
-	
-	public static void foo(int a, long b) //4
-	{
-		System.out.println("Sample.foo(int, long)");		
-	}
-	
-	public static void foo(double a, long b) //5
-	{
-		System.out.println("Sample.foo(double, long)");		
-	}
-	
-	public static void foo(int a, char b) //6
-	{
-		System.out.println("Sample.foo(int, char)");		
-	}
-	
-	public static void bar() //7
-	{
-		System.out.println("Sample.bar()");		
-	}
+	public int x;
+	public boolean y;
+	//...
 }
-
-
-
