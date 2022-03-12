@@ -1,20 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	ctor aşağıdaki özelliklere sahip bir metottur:
-	- Sınıfı yazan programcı sınıfa hiçbir ctor yazmazsa parametresiz ctor'u (default ctor) derleyici tarafından içi boş
-	ve public olarak yazılır
-	
-	- Sınıfı yazan programcı en az bir tane ctor yazarsa default ctor derleyici tarafından yazılmaz. Artık default ctor
-	yazılıp yazılmayacağı sınıfı yazan programcıya bırakılmış olur
-	
-	- ctor sınıf ismi ile aynı olan ve geri dönüş değeri kavramı olmayan bir metottur. Geri dönüş değeri bilgisi yazılmaz.
-	void da yazılmaz. Sınıf ismi ile aynı isimde bir metot yazılıp geri dönüş değeri bilgisi de yazılırsa artık bu metot
-	ctor olmaz. Şüphesiz böyle bir metot yazılmamalıdır  
-	 
-	- ctor overload edilebilir (constructor overloading)
-	
-	- ctor non-static bir metottur
-	
-	- 
+	Point sınıfı  
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
@@ -22,32 +7,68 @@ class App {
 	public static void main(String [] args) 
 	{	
 		java.util.Scanner kb = new java.util.Scanner(System.in);
-		System.out.print("Minimum değer giriniz:");
-		int min = Integer.parseInt(kb.nextLine());
+		Point p1, p2, p3;
 		
-		System.out.print("Maksimum değer giriniz:");
-		int max = Integer.parseInt(kb.nextLine());
+		p1 = new Point();
+		p2 = new Point(56.89, 300.98);
+		p3 = new Point(67);
 		
-		System.out.print("Kaç tane sayı üretmek istersiniz?");
-		int count = Integer.parseInt(kb.nextLine());
+		p1.print();
+		p2.print();
+		p3.print();
 		
-		for (int i = 0; i < count; ++i)
-			System.out.printf("%d ", (int)(Math.random() * (max - min) + min)); //[min, max)
-		
-		System.out.println();
+		p2.offset(3.4);
+		p2.print();
 	}
 }
 
-class Sample {
-	public Sample()
-	{
-		
-	}
-	
-	public Sample(int a)
-	{
-		
-	}
+class Point {
+	 public double x;
+	 public double y;
+	 
+	 public Point()
+	 {		 
+	 }
+	 
+	 public Point(double a)
+	 {
+		 x = a;
+	 }
+	 
+	 public Point(double a, double b)
+	 {
+		 x = a;
+		 y = b;
+	 }
+	 
+	 public double distance()
+	 {
+		 return distance(0, 0);		 		 
+	 }
+	 
+	 public double distance(Point other)
+	 {
+		 return distance(other.x, other.y);
+	 }
+	 
+	 public double distance(double a, double b)
+	 {
+		 return Math.sqrt(Math.pow(x - a, 2) + Math.pow(y - b, 2));		 		 		 		 
+	 }
+	 
+	 public void offset(double dxy)
+	 {
+		 offset(dxy, dxy);
+	 }
+	 
+	 public void offset(double dx, double dy)
+	 {
+		 x += dx;
+		 y += dy;
+	 }	 
+	 
+	 public void print() 
+	 {
+		 System.out.printf("(%f, %f)%n", x, y);
+	 }
 }
-
-
