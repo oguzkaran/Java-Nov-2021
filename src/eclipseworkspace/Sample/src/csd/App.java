@@ -1,38 +1,30 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı bir yazının tersini döndüren reversed isimli metodu StringUtil sınıfı 
-	içerisinde yazınız ve aşağıdaki kod ile test ediniz. 
+	Character sınıfının toXXX metotları
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{	
-		ReverseTest.run()
-	}
-}
-
-class ReverseTest {
-	public static void run()
-	{		
 		java.util.Scanner kb = new java.util.Scanner(System.in);
+		System.out.printf("Bir yazı giriniz:");
+		String s = kb.nextLine();		
+		int len = s.length();
 		
-		for (;;) {
-			System.out.print("Bir yazı giriniz:");
-			String s = kb.nextLine();			
+		for (int i = 0; i < len; ++i) {
+			char ch = s.charAt(i);
 			
-			if ("elma".equals(s))
-				break;
+			if (!Character.isLetter(ch))
+				continue;
 			
-			System.out.printf("Yazının tersi:%s%n", StringUtil.reversed(s));
+			
+			ch = Character.isUpperCase(ch) ? Character.toLowerCase(ch) : Character.toUpperCase(ch);
+			
+			System.out.printf("%c", ch);			
 		}
 		
-		System.out.println("Tekrar yapıyor musunuz?");		
+		System.out.println();
+						
 	}
 }
 
-class StringUtil {
-	public static String reversed(String s)
-	{
-		//TODO: 
-	}
-}
