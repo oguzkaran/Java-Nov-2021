@@ -1,7 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Aşağıdaki örnekte println metodu birleştirilmiş yazıyı argüman olarak alır ve ekrana basar. Şüphesiz birleştirme
-	işlemini println yapamaz. Çünkü metot çağrılmadan önce argümana ilişkin ifade hesaplanır, elde edilen değer ile
-	metot çağrılır
+	Sınıf Çalışması: Parametresi ile aldığı bir yazının tersini döndüren reversed isimli metodu StringUtil sınıfı 
+	içerisinde yazınız ve aşağıdaki kod ile test ediniz. 
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
@@ -17,3 +16,28 @@ class App {
 	}
 }
 
+class ReverseTest {
+	public static void run()
+	{		
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		for (;;) {
+			System.out.print("Bir yazı giriniz:");
+			String s = kb.nextLine();			
+			
+			if ("elma".equals(s))
+				break;
+			
+			System.out.printf("Yazının tersi:%s%n", StringUtil.reversed(s));
+		}
+		
+		System.out.println("Tekrar yapıyor musunuz?");		
+	}
+}
+
+class StringUtil {
+	public static String reversed(String s)
+	{
+		//TODO: 
+	}
+}
