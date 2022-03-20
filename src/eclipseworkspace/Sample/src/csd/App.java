@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
 	Sınıf Çalışması: Parametresi ile aldığı bir yazının sadece başındaki boşluk karakterlerini atan trimLeading ve 
-	sadece sonundaki boşluk karakterlerini atan trimTrailing isimli metotları yazınız ve aşağıdaki kod ile test ediniz.	
+	sadece sonundaki boşluk karakterlerini atan trimTrailing isimli metotlarını yazınız ve aşağıdaki kod ile test ediniz.	
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
@@ -23,7 +23,7 @@ class TrimLeadingTrailingTest {
 			if ("elma".equals(s))
 				break;
 			
-			System.out.printf("(%s)%n", StringUtil.trimleading(s));
+			System.out.printf("(%s)%n", StringUtil.trimLeading(s));
 			System.out.printf("(%s)%n", StringUtil.trimTrailing(s));
 		}
 		
@@ -35,12 +35,23 @@ class TrimLeadingTrailingTest {
 class StringUtil {
 	public static String trimLeading(String s)
 	{
-		//TODO:
+		int i;
+		int len = s.length();		
+	
+		for (i = 0; Character.isWhitespace(s.charAt(i)) && i < len; ++i)
+			;
+		
+		return s.substring(i);		
 	}
 	
 	public static String trimTrailing(String s)
 	{
-		//TODO:
+		int i;	
+		
+		for (i = s.length() - 1; i >= 0 && Character.isWhitespace(s.charAt(i)); --i)
+			;
+		
+		return s.substring(0, i + 1);
 	}
 }
 
