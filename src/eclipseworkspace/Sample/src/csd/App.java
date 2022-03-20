@@ -1,20 +1,17 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı bir yazının ilk harfi büyük geri kalan tüm harfleri küçük olacak ve 
-	harf dışı karakterler de aynı kalacak şekilde bir yazı döndüren. capitalize isimli metodu StringUtil sınıfı 
-	içerisinde yazınız ve aşağıdaki kod ile test ediniz.
-	
-	Örnek: java Programcısı ÇOK çalışmalıdır. -> Java programcısı çok çalışmalıdır.
+	Sınıf Çalışması: Parametresi ile aldığı bir yazının sadece başındaki boşluk karakterlerini atan trimLeading ve 
+	sadece sonundaki boşluk karakterlerini atan trimTrailing isimli metotları yazınız ve aşağıdaki kod ile test ediniz.	
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{	
-		CapitalizeTest.run();						
+		TrimLeadingTrailingTest.run();						
 	}
 }
 
-class CapitalizeTest {
+class TrimLeadingTrailingTest {
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
@@ -26,7 +23,8 @@ class CapitalizeTest {
 			if ("elma".equals(s))
 				break;
 			
-			System.out.printf("(%s)%n", StringUtil.capitalize(s));
+			System.out.printf("(%s)%n", StringUtil.trimleading(s));
+			System.out.printf("(%s)%n", StringUtil.trimTrailing(s));
 		}
 		
 		System.out.println("Tekrar yapıyor musunuz?");
@@ -35,7 +33,12 @@ class CapitalizeTest {
 
 
 class StringUtil {
-	public static String capitalize(String s)
+	public static String trimLeading(String s)
+	{
+		//TODO:
+	}
+	
+	public static String trimTrailing(String s)
 	{
 		//TODO:
 	}
