@@ -1,30 +1,43 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Character sınıfının toXXX metotları
+	Sınıf Çalışması: Parametresi ile aldığı bir yazının ilk harfi büyük geri kalan tüm harfleri küçük olacak ve 
+	harf dışı karakterler de aynı kalacak şekilde bir yazı döndüren. capitalize isimli metodu StringUtil sınıfı 
+	içerisinde yazınız ve aşağıdaki kod ile test ediniz.
+	
+	Örnek: java Programcısı ÇOK çalışmalıdır. -> Java programcısı çok çalışmalıdır.
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{	
+		CapitalizeTest.run();						
+	}
+}
+
+class CapitalizeTest {
+	public static void run()
+	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
-		System.out.printf("Bir yazı giriniz:");
-		String s = kb.nextLine();		
-		int len = s.length();
 		
-		for (int i = 0; i < len; ++i) {
-			char ch = s.charAt(i);
+		for (;;) {
+			System.out.print("Bir yazı giriniz:");
+			String s = kb.nextLine();
 			
-			if (!Character.isLetter(ch))
-				continue;
+			if ("elma".equals(s))
+				break;
 			
-			
-			ch = Character.isUpperCase(ch) ? Character.toLowerCase(ch) : Character.toUpperCase(ch);
-			
-			System.out.printf("%c", ch);			
+			System.out.printf("(%s)%n", StringUtil.capitalize(s));
 		}
 		
-		System.out.println();
-						
+		System.out.println("Tekrar yapıyor musunuz?");
+	}
+}
+
+
+class StringUtil {
+	public static String capitalize(String s)
+	{
+		//TODO:
 	}
 }
 
