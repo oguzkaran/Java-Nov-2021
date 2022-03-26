@@ -1,47 +1,20 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir count değeri için count tane rasgele üretilmiş Türkçe
-	karakterlerden oluşan bir yazı döndüren getRandomTextTR ile count tane rasgele üretilmiş İnglizce karakterlerden oluşan 
-	bir yazı döndüren getRandomTextEN metotlarını yazınız ve aşağıdaki kod ile test ediniz
+	Şu ana kadar gördüklerimizle temel türden bir değerin yazı karşılığı aşağıdaki yöntemlerle elde edilebilir
 ----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args) 
 	{
-		GetRandomTextTRENTest.run();
-	}
-}
-
-class GetRandomTextTRENTest {
-	public static void run()
-	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
+		int a = 10;
+		String s1 = String.valueOf(a);
+		String s2 = a + "";
+		String s3 = String.format("%d", a);
 		
-		for (;;) {
-			System.out.print("Bir sayı giriniz:");
-			int count = Integer.parseInt(kb.nextLine());
-			
-			if (count <= 0)				
-				break;
-			
-			System.out.printf("Şifre:%s%n", StringUtil.getRandomTextTR(count));
-			System.out.printf("PAssword:%s%n", StringUtil.getRandomTextEN(count));
-			
-		}
-		
-		System.out.println("Tekrar yapıyor musunuz?");
+		System.out.println(s1);
+		System.out.println(s2);
+		System.out.println(s3);
 	}
 }
 
 
-class StringUtil {	
-	public static String getRandomTextTR(int count)
-	{
-		
-	}	
-	
-	public static String getRandomTextEN(int count)
-	{
-		
-	}
-}
