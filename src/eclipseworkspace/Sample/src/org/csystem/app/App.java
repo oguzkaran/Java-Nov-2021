@@ -1,12 +1,14 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Java'da yorum satırları
+ 
 ----------------------------------------------------------------------------------------------------------------------*/
-package csd;
+package org.csystem.app;
 
 class App {	
-	public static void main()
+	public static void main(String [] args)
 	{
-		System.out.println("csd.App.main");		
+		System.out.println("Merhaba");				
 	}	
 }
+
+
 
