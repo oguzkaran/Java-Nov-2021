@@ -1,23 +1,24 @@
 /*----------------------------------------------------------------
-	FILE		: Complex.java
+	FILE		: StringUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 03.04.2022
+	LAST UPDATE	: 02.04.2022
 	
-	StringUtil class that represents a "String Util"
+	Utility class for string operations
 	
 	Copyleft (c) 1993 C and System Programmers Association
 	All Rights Free
 ----------------------------------------------------------------*/
-
 package org.csystem.util.string;
 
 public class StringUtil {
 
-	public static String capitalize(String s) {
+	public static String capitalize(String s) 
+	{
 		return s.isEmpty() ? "" : Character.toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();
 	}
 
-	public static boolean containsAll(String s, String text) {
+	public static boolean containsAll(String s, String text) 
+	{
 		int len = text.length();
 
 		for (int i = 0; i < len; ++i)
@@ -27,7 +28,8 @@ public class StringUtil {
 		return true;
 	}
 
-	public static int countString(String str, String s) {
+	public static int countString(String str, String s) 
+	{
 		int count = 0;
 
 		for (int i = -1; (i = str.indexOf(s, i + 1)) != -1; ++count)
@@ -36,11 +38,13 @@ public class StringUtil {
 		return count;
 	}
 
-	public static int countStringIgnoreCase(String str, String s) {
+	public static int countStringIgnoreCase(String str, String s) 
+	{
 		return countString(str.toLowerCase(), s.toLowerCase());
 	}
 
-	public static String getLongestPalindrome(String text) {
+	public static String getLongestPalindrome(String text) 
+	{
 		String result = "";
 
 		int end = text.length();
@@ -61,7 +65,8 @@ public class StringUtil {
 		return result;
 	}
 
-	public static String getRandomText(java.util.Random r, int count, String text) {
+	public static String getRandomText(java.util.Random r, int count, String text) 
+	{
 		String str = "";
 
 		int len = text.length();
@@ -72,23 +77,28 @@ public class StringUtil {
 		return str;
 	}
 
-	public static String getRandomTextEN(int count) {
+	public static String getRandomTextEN(int count) 
+	{
 		return getRandomTextEN(new java.util.Random(), count);
 	}
 
-	public static String getRandomTextEN(java.util.Random r, int count) {
+	public static String getRandomTextEN(java.util.Random r, int count)
+	{
 		return getRandomText(r, count, "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ");
 	}
 
-	public static String getRandomTextTR(int count) {
+	public static String getRandomTextTR(int count) 
+	{
 		return getRandomTextTR(new java.util.Random(), count);
 	}
 
-	public static String getRandomTextTR(java.util.Random r, int count) {
-		return getRandomText(r, count, "abcçdefgðhýijklmnoöprsþtuüvyzABCÇDEFGÐHIÝJKLMNOÖPRSÞTUÜVYZ");
+	public static String getRandomTextTR(java.util.Random r, int count) 
+	{
+		return getRandomText(r, count, "abcÃ§defgÄŸhÄ±ijklmnoÃ¶prsÅŸtuÃ¼vyzABCÃ‡DEFGÄžHIÄ°JKLMNOÃ–PRSÅžTUÃœVYZ");
 	}
 
-	public static boolean isPalindrome(String s) {
+	public static boolean isPalindrome(String s)
+	{
 		int left = 0;
 		int right = s.length() - 1;
 
@@ -117,69 +127,53 @@ public class StringUtil {
 		return Character.isLetter(s.charAt(left));
 	}
 
-	public static boolean isPangramEN(String s) {
-		for (char c = 'a'; c <= 'z'; ++c)
-			if (!s.contains(Character.toLowerCase(c) + ""))
-				return false;
-
-		return true;
+	public static boolean isPangramEN(String s) 
+	{
+		return containsAll(s.toLowerCase(), "abcdefghijklmnopqrstuwxvyz");
 	}
 
-	public static boolean isPangramTR(String s) {
-		return containsAll(s.toLowerCase(), "abcçdefgðhýijklmnoöprsþtuüvyz");
+	public static boolean isPangramTR(String s)
+	{
+		return containsAll(s.toLowerCase(), "abcÃ§defgÄŸhÄ±ijklmnoÃ¶prsÅŸtuÃ¼vyz");
 	}
 
-	public static String padLeading(String s, int length) {
+	public static String padLeading(String s, int length)
+	{
 		return padLeading(s, length, ' ');
 	}
 
-	public static String padLeading(String s, int length, char ch) {
+	public static String padLeading(String s, int length, char ch) 
+	{
 		int len = s.length();
 
-		return (length <= len) ? s : (repeat(length - len, ch) + s);
+		return (length <= len) ? s : ((ch + "").repeat(length - len) + s);
 	}
 
-	public static String padTrailing(String s, int length) {
+	public static String padTrailing(String s, int length) 
+	{
 		return padTrailing(s, length, ' ');
 	}
 
-	public static String padTrailing(String s, int length, char ch) {
+	public static String padTrailing(String s, int length, char ch) 
+	{
 		int len = s.length();
 
-		return (length <= len) ? s : (s + repeat(length - len, ch));
+		return (length <= len) ? s : (s + (ch + "").repeat(length - len));
 	}
 
-	public static String repeat(int count, char ch) {
-		return String.format("%0" + count + "d", 0).replace('0', ch);
-	}
 
-	public static String repeat1(int count, char ch) {
-		return String.format("%0" + count + "d", 0).replace('0', ch);
-	}
-
-	public static String repeat2(int count, char ch) {
-		return String.format("%" + count + "c", ' ').replace(' ', ch);
-	}
-
-	public static String repeat(int count, String str) {
-		String s = "";
-
-		for (int i = 0; i < count; ++i)
-			s += str;
-
-		return s;
-	}
-
-	public static String reversed(String s) {
+	public static String reversed(String s)
+	{
 		String rev = "";
 
 		for (int i = s.length() - 1; i >= 0; --i)
-			rev += s.charAt(i); // **
+			rev += s.charAt(i);
 
 		return rev;
 	}
 
-	public static String trimLeading(String s) {
+	public static String trimLeading(String s)
+	{
 		int i;
 		int len = s.length();
 
@@ -189,7 +183,8 @@ public class StringUtil {
 		return s.substring(i);
 	}
 
-	public static String trimTrailing(String s) {
+	public static String trimTrailing(String s)
+	{
 		int i;
 
 		for (i = s.length() - 1; i >= 0 && Character.isWhitespace(s.charAt(i)); --i)

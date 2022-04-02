@@ -1,24 +1,19 @@
+/*----------------------------------------------------------------
+	FILE		: NumberUtil.java
+	AUTHOR		: Java-Nov-2021 Group
+	LAST UPDATE	: 02.04.2022
+	
+	Utility class for numeric operations
+	
+	Copyleft (c) 1993 C and System Programmers Association
+	All Rights Free
+----------------------------------------------------------------*/
 package org.csystem.util.numeric;
 
-public class NumberUtil {
-	public static int add(int a, int b)
+public class NumberUtil {	
+	public static int digitsCount(int a)
 	{
-		return a + b;
-	}
-	
-	public static int digitsCount(int val)
-	{
-		if (val == 0)
-			return 1;
-		
-		int count = 0;
-		
-		while (val != 0) {
-			++count;
-			val /= 10;
-		}
-		
-		return count;
+		return a == 0 ? 1 : (int)Math.log10(Math.abs(a)) + 1; 
 	}
 	
 	public static int digitsSum(int val)
@@ -60,7 +55,7 @@ public class NumberUtil {
 		int sum = 0;
 		
 		while (val != 0) {
-			sum += pow(val % 10, count);
+			sum += Math.pow(val % 10, count);
 			val /= 10;
 		}
 		
@@ -168,15 +163,6 @@ public class NumberUtil {
 		return Math.max(Math.max(a, b), c);
 	}
 	
-	public static int pow(int a, int b)
-	{
-		int result = 1;
-		
-		for (int i = 0; i < b; ++i)
-			result *= a;
-		
-		return result;
-	}
 	
 	public static int reversed(int val)
 	{		
@@ -188,10 +174,5 @@ public class NumberUtil {
 		}		
 		
 		return result;
-	}
-	
-	public static int square(int a)
-	{
-		return a * a;
-	}
+	}	
 }
