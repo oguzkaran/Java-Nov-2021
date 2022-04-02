@@ -1,34 +1,33 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Bir isim kod içerisinde iki şekilde kullanılabilir: nitelikli (qualified), niteliksiz (unqualified)
+	import bildirimi genel olarak niteliklendirmeyi azaltmak için, dolayısıyla daha kolay ve açık (clean) kod yazımı
+	düşünülmüştür. import bildirimi bir kütüphaneyi "import etmek" anlamına GELMEZ
 	
-	Kullanılan bir isim nokta operatörünün sağında kalıyorsa nitelikli, kalmıyorsa niteliksiz kullanılmış olur.
+	import bildirimi iki şekilde kullanılabilir:
+	1. Yıldızlı import bildirimi (import on demand declaration)
+	2. Yıldızsız import bildirimi (import single type declaration)
 	
-	Niteliksiz kullanılan isimler "niteliksiz isim arama (unqualified name lookup)" kurallarına göre, nitelikli
-	kullanılan isimler ise "nitelikli isim arama (qualified name lookup)" kurallarına göre aranır. 
+	import bildirimleri ".java" dosyasında (compilation/translation unit) paket bildiriminden sonra diğer bildirimlerden
+	önce olmalıdır. import bildirimlerinin sırasının önemi yoktur. import bildirimleri bildirildiği ".java" dosyasına
+	özgüdür. Başka bir derleme birimini etkilemez
 	
-	Anathar Notlar: Yukarıdaki tanımlarda nitelikli veya niteliksiz olmak olumlu veya olumsuz bir etki anlamında
-	düşünülmemelidir
+	Anahtar Notlar: "Yıldızlı ve yıldızsız import bildirimi" tercümesi kolay anlatmak için Oğuz Karan tarafından uydurulmuştur. 
+	Teknik isimde yıldız (asterisk) anlamında düşünülmemelidir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+
 
 class App {	
 	public static void main(String [] args)
 	{
-		Sample s; //Sample niteliksiz aranır
+		test.Sample s;
 		
-		s = new Sample(); //s ve Sample niteliksiz aranır
-		s.x = 20; //s niteliksiz, x nitelikli aranır
-		s.foo(30); //s niteliksiz, foo nitelikli aranır
-									
+		s = new test.Sample();
+		
+		s.x = 20;
+		s.foo();
+		System.out.printf("s.x = %d%n", s.x);
+						
 	}	
 }
 
-
-class Sample { 
-	public int x;
-	
-	public void foo(int a)  
-	{
-		x = a; //x ve a niteliksiz aranır
-	}
-}
