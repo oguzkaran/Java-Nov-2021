@@ -1,33 +1,40 @@
-/*----------------------------------------------------------------------------------------------------------------------
-	import bildirimi genel olarak niteliklendirmeyi azaltmak için, dolayısıyla daha kolay ve açık (clean) kod yazımı
-	düşünülmüştür. import bildirimi bir kütüphaneyi "import etmek" anlamına GELMEZ
+/*----------------------------------------------------------------------------------------------------------------------	
+	Yıldızlı import bildiriminin (import on demand declaration) genel biçimi:
 	
-	import bildirimi iki şekilde kullanılabilir:
-	1. Yıldızlı import bildirimi (import on demand declaration)
-	2. Yıldızsız import bildirimi (import single type declaration)
+		import <paket ismi>[.alt paketler].*;
 	
-	import bildirimleri ".java" dosyasında (compilation/translation unit) paket bildiriminden sonra diğer bildirimlerden
-	önce olmalıdır. import bildirimlerinin sırasının önemi yoktur. import bildirimleri bildirildiği ".java" dosyasına
-	özgüdür. Başka bir derleme birimini etkilemez
+	Bu bildirim niteliksiz isim arama genel kurallarına göre aranan bir ismin paket içerisinde de bulunamaması durumunda
+	arama için bakılacak paket belirtir. Yani adeta bir paketin başka bir paket içerisine isim arama anşlamında enjekte
+	edilmesidir. Bu durumda da ismin bulunamaması durumunda alt ya da üst paketlere bakılmaz
 	
-	Anahtar Notlar: "Yıldızlı ve yıldızsız import bildirimi" tercümesi kolay anlatmak için Oğuz Karan tarafından uydurulmuştur. 
-	Teknik isimde yıldız (asterisk) anlamında düşünülmemelidir
+	Daha açık olarak, yıldızlı import bildirimleri derleyiciye "eğer niteliksiz bir ismi paket içerisinde bulamazsan bu
+	paketlere de bak" anlamındadır
 ----------------------------------------------------------------------------------------------------------------------*/
+
 package org.csystem.app;
 
-
+import java.util.*;
+import org.csystem.util.string.*;
+import org.csystem.util.math.geometry.*;
 
 class App {	
 	public static void main(String [] args)
 	{
-		test.Sample s;
+		Scanner kb = new Scanner(System.in);
+		Random r = new Random();
 		
-		s = new test.Sample();
+		System.out.printf("Bir sayı giriniz:");
+		int count = Integer.parseInt(kb.nextLine());
 		
-		s.x = 20;
-		s.foo();
-		System.out.printf("s.x = %d%n", s.x);
-						
+		for (int i = 0; i < count; ++i) {
+			Point p = new Point(r.nextDouble(), r.nextDouble());
+			
+			System.out.println(p.toString());
+		}
+		
+		for (int i = 0; i < count; ++i)
+			System.out.println(StringUtil.getRandomTextTR(r, 10));
+		
 	}	
 }
 

@@ -1,4 +1,6 @@
-package org.csystem.app.sample.game;
+package org.csystem.app.game.ballfall;
+
+import org.csystem.game.BallFall;
 
 public class BallFallGameApp {
 	public static void run()

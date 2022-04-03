@@ -1,4 +1,4 @@
-package org.csystem.app.sample.game;
+package org.csystem.game;
 
 public class BallFall {
 	public static void fillSpace(int begin, int end) //[begin, end)
