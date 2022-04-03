@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: StringUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 02.04.2022
+	LAST UPDATE	: 03.04.2022
 	
 	Utility class for string operations
 	
@@ -9,6 +9,8 @@
 	All Rights Free
 ----------------------------------------------------------------*/
 package org.csystem.util.string;
+
+import java.util.Random;
 
 public class StringUtil {
 
@@ -65,7 +67,7 @@ public class StringUtil {
 		return result;
 	}
 
-	public static String getRandomText(java.util.Random r, int count, String text) 
+	public static String getRandomText(Random r, int count, String text) 
 	{
 		String str = "";
 
@@ -79,20 +81,20 @@ public class StringUtil {
 
 	public static String getRandomTextEN(int count) 
 	{
-		return getRandomTextEN(new java.util.Random(), count);
+		return getRandomTextEN(new Random(), count);
 	}
 
-	public static String getRandomTextEN(java.util.Random r, int count)
+	public static String getRandomTextEN(Random r, int count)
 	{
 		return getRandomText(r, count, "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ");
 	}
 
 	public static String getRandomTextTR(int count) 
 	{
-		return getRandomTextTR(new java.util.Random(), count);
+		return getRandomTextTR(new Random(), count);
 	}
 
-	public static String getRandomTextTR(java.util.Random r, int count) 
+	public static String getRandomTextTR(Random r, int count) 
 	{
 		return getRandomText(r, count, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
 	}
@@ -192,5 +194,4 @@ public class StringUtil {
 
 		return s.substring(0, i + 1);
 	}
-
 }
