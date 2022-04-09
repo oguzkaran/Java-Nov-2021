@@ -1,6 +1,6 @@
 package org.csystem.app.game.ballfall;
 
-import org.csystem.game.BallFall;
+import org.csystem.game.ballfall.BallFall;
 
 public class BallFallGameApp {
 	public static void run()

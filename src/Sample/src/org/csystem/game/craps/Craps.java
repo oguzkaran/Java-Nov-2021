@@ -1,4 +1,4 @@
-package org.csystem.game;
+package org.csystem.game.craps;
 
 public class Craps {
 	public boolean win;

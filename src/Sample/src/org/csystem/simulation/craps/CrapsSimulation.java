@@ -1,6 +1,6 @@
 package org.csystem.simulation.craps;
 
-import org.csystem.game.Craps;
+import org.csystem.game.craps.Craps;
 
 public class CrapsSimulation {
 	public double p;

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: StringUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 03.04.2022
+	LAST UPDATE	: 09.04.2022
 	
 	Utility class for string operations
 	
@@ -13,7 +13,6 @@ package org.csystem.util.string;
 import java.util.Random;
 
 public class StringUtil {
-
 	public static String capitalize(String s) 
 	{
 		return s.isEmpty() ? "" : Character.toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();
@@ -193,5 +192,30 @@ public class StringUtil {
 			;
 
 		return s.substring(0, i + 1);
+	}
+
+	public static String wrapWith(String str, String begin, String end, boolean strip)
+	{
+		return String.format("%s%s%s", begin, strip ? str.strip() : str, end);
+	}
+
+	public static String wrapWith(String str, char begin, char end, boolean strip)
+	{
+		return wrapWith(str, begin + "", end + "", strip);
+	}
+
+	public static String wrapWith(String str, String begin, String end)
+	{
+		return wrapWith(str, begin, end, false);
+	}
+
+	public static String wrapWith(String str, char begin, char end)
+	{
+		return wrapWith(str, begin + "", end + "");
+	}
+
+	public static String wrapWithBraces(String str)
+	{
+		return wrapWith(str, '(', ')', true);
 	}
 }
