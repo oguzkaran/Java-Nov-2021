@@ -1,7 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizinin elemanlarını parametresi ile aldığı min ve maz değerleri
-	içim [min, max] aralığında rasgele değerlerle dolsuran fillRandomArray isimli metodu ArrayUtil sınıfı içerisinde
-	yazınız ve aşağıdaki kod ile test ediniz. Metodun Random referansı alan ve almayan iki oveload'unu da yazınız
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizinin elemanlarını ters yüz eden reverse isimli metodu
+	başka bir dizi kullanmadan ArrayUtil içerisinde yazınız ve aşağıdaki kod ile test ediniz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
@@ -13,11 +12,11 @@ import static org.csystem.util.array.ArrayUtil.*;
 class App {
 	public static void main(String [] args)
 	{
-		FillRandomArrayTest.run();
+		ReverseTest.run();
 	}	
 }
 
-class FillRandomArrayTest {
+class ReverseTest {
 	public static void run()
 	{
 		Scanner kb = new Scanner(System.in);
@@ -36,12 +35,11 @@ class FillRandomArrayTest {
 			if (n <= 0)
 				break;
 
-			int [] a = new int[n];
-
-			fillRandomArray(r, a, min, max);
+			int [] a = getRandomArray(r, n, min, max);
 
 			print(a);
-			System.out.printf("Toplam:%d%n", sum(a));
+			reverse(a);
+			print(a);
 		}
 
 		System.out.println("Tekrar yapıyor musunuz?");

@@ -15,20 +15,31 @@ import java.util.Random;
 public class ArrayUtil {
     public static void fillRandomArray(Random r, int [] a, int min, int max)
     {
-        //TODO:
+        for (int i = 0; i < a.length; ++i)
+            a[i] = r.nextInt(min, max + 1); //Since Java 17
     }
 
-    public static int [] fillRandomArray(int [] a, int min, int max)
+    public static void fillRandomArray(int [] a, int min, int max)
     {
-        return fillRandomArray(new Random(), a, min, max);
+        fillRandomArray(new Random(), a, min, max);
+    }
+
+    public static void fillRandomArray(Random r, double [] a, double min, double bound)
+    {
+        for (int i = 0; i < a.length; ++i)
+            a[i] = r.nextDouble(min, bound); //Since Java 17
+    }
+
+    public static void fillRandomArray(double [] a, double min, int bound)
+    {
+        fillRandomArray(new Random(), a, min, bound);
     }
 
     public static int [] getRandomArray(Random r, int count, int min, int max) //[min, max]
     {
         int [] a = new int[count];
 
-        for (int i = 0; i < count; ++i)
-            a[i] = r.nextInt(max - min + 1) + min;
+        fillRandomArray(r, a, min, max);
 
         return a;
     }
@@ -38,19 +49,18 @@ public class ArrayUtil {
         return getRandomArray(new Random(), count, min, max);
     }
 
-    public static double [] getRandomArray(Random r, int count, double min, double max) //[min, max)
+    public static double [] getRandomArray(Random r, int count, double min, double bound) //[min, bound)
     {
         double [] a = new double[count];
 
-        for (int i = 0; i < count; ++i)
-            a[i] = r.nextDouble() * (max - min) + min;
+        fillRandomArray(r, a, min, bound);
 
         return a;
     }
 
-    public static double [] getRandomArray(int count, double min, double max) //[min, max)
+    public static double [] getRandomArray(int count, double min, double bound) //[min, max)
     {
-        return getRandomArray(new Random(), count, min, max);
+        return getRandomArray(new Random(), count, min, bound);
     }
 
     public static void print(int [] a)
@@ -59,6 +69,11 @@ public class ArrayUtil {
             System.out.printf("%d ", a[i]);
 
         System.out.println();
+    }
+
+    public static void reverse(int [] a)
+    {
+        //TODO:
     }
 
     public static void swap(int [] a, int i, int k)
