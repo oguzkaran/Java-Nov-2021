@@ -73,7 +73,8 @@ public class ArrayUtil {
 
     public static void reverse(int [] a)
     {
-        //TODO:
+        for (int i = 0;i < a.length / 2; ++i)
+            swap(a, i, a.length - 1 - i);
     }
 
     public static void swap(int [] a, int i, int k)
