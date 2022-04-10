@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: StringUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 09.04.2022
+	LAST UPDATE	: 10.04.2022
 	
 	Utility class for string operations
 	
@@ -16,6 +16,20 @@ public class StringUtil {
 	public static String capitalize(String s) 
 	{
 		return s.isEmpty() ? "" : Character.toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();
+	}
+
+	public static String changeCase(String s)
+	{
+		String str = "";
+		int len = s.length();
+
+		for (int i = 0; i < len; ++i) {
+			char ch = s.charAt(i);
+
+			str += Character.isUpperCase(ch) ? Character.toLowerCase(ch) : Character.toUpperCase(ch);
+		}
+
+		return str;
 	}
 
 	public static boolean containsAll(String s, String text) 
@@ -96,6 +110,23 @@ public class StringUtil {
 	public static String getRandomTextTR(Random r, int count) 
 	{
 		return getRandomText(r, count, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
+	}
+
+	public static boolean isIdentifier(String s)
+	{
+		if (s.isBlank() || s.equals("_"))
+			return false;
+
+		if (!Character.isJavaIdentifierStart(s.charAt(0)))
+			return false;
+
+		int len = s.length();
+
+		for (int i = 1; i < len; ++i)
+			if (!Character.isJavaIdentifierPart(s.charAt(i)))
+				return false;
+
+		return true;
 	}
 
 	public static boolean isPalindrome(String s)

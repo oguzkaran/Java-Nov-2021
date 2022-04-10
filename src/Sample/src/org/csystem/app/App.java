@@ -1,53 +1,26 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Homework-008-4. sorunun bir çözümü
-	(Not: Çözüm çalışma sorusunun verildiği tarihte işlenmiş olan konulara göre yazılmıştır)
+	[] operatörüne pozitif ya da negatif bakımdan sınırlar dışında bir indeks numarası verildiğinde exception oluşur
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import java.util.Random;
+import java.util.Scanner;
 
 class App {
 	public static void main(String [] args)
 	{
-		SqueezeTest.run();
+		Random r = new Random();
+		Scanner kb = new Scanner(System.in);
+		System.out.print("Bir sayı giriniz:");
+		int n = Integer.parseInt(kb.nextLine());
+		int [] a;
+
+		a = new int[n];
+
+		for (int i = 0; i < a.length; ++i)
+			a[i] = r.nextInt(100);
+
+		System.out.printf("a[5] = %d%n", a[5]);
 	}	
 }
-
-class SqueezeTest {
-	public static void run()
-	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-
-		for (;;) {
-			System.out.print("Birinci yazıyı giriniz:");
-			String s1 = kb.nextLine();
-
-			System.out.print("İkinci yazıyı giriniz:");
-			String s2 = kb.nextLine();
-
-			System.out.println(StringUtil.squeeze(s1, s2));
-
-			if ("elma".equals(s1))
-				break;
-		}
-
-		System.out.println("Tekrar yapıyor musunuz?");
-	}
-}
-
-class StringUtil {
-	public static String squeeze(String s1, String s2)
-	{
-		String str = "";
-		int len = s1.length();
-
-		for (int i = 0; i < len; ++i) {
-			char ch = s1.charAt(i);
-
-			if (!s2.contains(ch + ""))
-				str += ch;
-		}
-
-		return str;
-	}
-}
-
 
