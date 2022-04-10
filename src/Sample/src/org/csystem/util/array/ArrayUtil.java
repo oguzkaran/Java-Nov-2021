@@ -13,6 +13,16 @@ package org.csystem.util.array;
 import java.util.Random;
 
 public class ArrayUtil {
+    public static void fillRandomArray(Random r, int [] a, int min, int max)
+    {
+        //TODO:
+    }
+
+    public static int [] fillRandomArray(int [] a, int min, int max)
+    {
+        return fillRandomArray(new Random(), a, min, max);
+    }
+
     public static int [] getRandomArray(Random r, int count, int min, int max) //[min, max]
     {
         int [] a = new int[count];
@@ -71,6 +81,11 @@ public class ArrayUtil {
 
     public static int sum(int [] a)
     {
-        //TODO:
+        int total = 0;
+
+        for (int i = 0; i < a.length; ++i)
+            total += a[i];
+
+        return total;
     }
 }

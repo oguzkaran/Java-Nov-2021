@@ -1,6 +1,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizinin elemanlarının toplamını döndüren sum isimli metodu
-	ArrayUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizinin elemanlarını parametresi ile aldığı min ve maz değerleri
+	içim [min, max] aralığında rasgele değerlerle dolsuran fillRandomArray isimli metodu ArrayUtil sınıfı içerisinde
+	yazınız ve aşağıdaki kod ile test ediniz. Metodun Random referansı alan ve almayan iki oveload'unu da yazınız
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
@@ -12,14 +13,11 @@ import static org.csystem.util.array.ArrayUtil.*;
 class App {
 	public static void main(String [] args)
 	{
-		Random r = new Random();
-		int [] a = getRandomArray(r, 10, 0, 99);
-
-		print(a);
+		FillRandomArrayTest.run();
 	}	
 }
 
-class SumIntArrayTest {
+class FillRandomArrayTest {
 	public static void run()
 	{
 		Scanner kb = new Scanner(System.in);
@@ -38,7 +36,9 @@ class SumIntArrayTest {
 			if (n <= 0)
 				break;
 
-			int [] a = getRandomArray(r, n, min, max);
+			int [] a = new int[n];
+
+			fillRandomArray(r, a, min, max);
 
 			print(a);
 			System.out.printf("Toplam:%d%n", sum(a));
