@@ -13,6 +13,35 @@ package org.csystem.util.array;
 import java.util.Random;
 
 public class ArrayUtil {
+    public static void bubbleSortAscending(int [] a)
+    {
+        for (int i = 0; i < a.length - 1; ++i)
+            for (int k = 0; k < a.length - i - 1; ++k)
+                if (a[k + 1] < a[k])
+                    swap(a, k, k + 1);
+    }
+
+    public static void bubbleSortDescending(int [] a)
+    {
+        for (int i = 0; i < a.length - 1; ++i)
+            for (int k = 0; k < a.length - i - 1; ++k)
+                if (a[k] < a[k + 1])
+                    swap(a, k, k + 1);
+    }
+
+    public static void bubbleSort(int [] a)
+    {
+        bubbleSort(a, false);
+    }
+
+    public static void bubbleSort(int [] a, boolean descending)
+    {
+        if (descending)
+            bubbleSortDescending(a);
+        else
+            bubbleSortAscending(a);
+    }
+
     public static void fillRandomArray(Random r, int [] a, int min, int max)
     {
         for (int i = 0; i < a.length; ++i)
@@ -65,17 +94,27 @@ public class ArrayUtil {
 
     public static void print(int [] a)
     {
+        print(1, a);
+    }
+    public static void print(int n, int [] a)
+    {
         for (int i = 0; i < a.length; ++i)
-            System.out.printf("%d ", a[i]);
+            System.out.printf("%0" + n + "d ", a[i]);
 
         System.out.println();
     }
 
-
     public static void print(long [] a)
     {
+        print(1, a);
+    }
+
+    public static void print(int n, long [] a)
+    {
+        String fmt = String.format("%%0%dd ", n);
+
         for (int i = 0; i < a.length; ++i)
-            System.out.printf("%d ", a[i]);
+            System.out.printf(fmt, a[i]);
 
         System.out.println();
     }

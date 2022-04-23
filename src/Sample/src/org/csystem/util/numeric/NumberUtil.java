@@ -14,10 +14,11 @@ import static java.lang.Math.abs;
 import static java.lang.Math.log10;
 import static java.lang.Math.pow;
 
-public class NumberUtil {	
-	public static int digitsCount(int a)
+public class NumberUtil {
+
+	public static int digitsCount(long a)
 	{
-		return a == 0 ? 1 : (int)log10(abs(a)) + 1; 
+		return a == 0 ? 1 : (int)log10(abs(a)) + 1;
 	}
 	
 	public static int digitsSum(int val)
@@ -55,7 +56,13 @@ public class NumberUtil {
 
 	public static int [] getDigits(long a)
 	{
-		//TODO:
+		a = Math.abs(a);
+		int [] digits = new int[digitsCount(a)];
+
+		for (int i = digits.length - 1; i >= 0; digits[i] = (int)(a % 10), --i, a /= 10)
+			;
+
+		return digits;
 	}
 
 	
