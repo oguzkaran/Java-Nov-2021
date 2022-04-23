@@ -1,46 +1,38 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizinin elemanlarını ters yüz eden reverse isimli metodu
-	başka bir dizi kullanmadan ArrayUtil içerisinde yazınız ve aşağıdaki kod ile test ediniz
+	Sınıf Çalışması: Parametresi ile aldığı long türden bir sayının basamaklarından oluşan diziyi döndüren getDigits isimli
+	metodu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz
+
+	Açıklama: Metot negatif sayılar için basamak değerlerini pozitif olarak verecektir
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import java.util.Random;
-import java.util.Scanner;
+import org.csystem.util.array.ArrayUtil;
+import org.csystem.util.numeric.NumberUtil;
 
-import static org.csystem.util.array.ArrayUtil.*;
+import java.util.Scanner;
 
 class App {
 	public static void main(String [] args)
 	{
-		ReverseTest.run();
+		GetDigitsTest.run();
 	}	
 }
 
-class ReverseTest {
+class GetDigitsTest {
 	public static void run()
 	{
 		Scanner kb = new Scanner(System.in);
-		System.out.print("Min değerini giriniz:");
-		int min = Integer.parseInt(kb.nextLine());
-
-		System.out.print("Max değerini giriniz:");
-		int max = Integer.parseInt(kb.nextLine());
-
-		Random r = new Random();
 
 		for (;;) {
 			System.out.print("Dizinin eleman sayısını giriniz:");
-			int n = Integer.parseInt(kb.nextLine());
+			long val = Long.parseLong(kb.nextLine());
 
-			if (n <= 0)
-				break;
+			int [] a = NumberUtil.getDigits(val);
 
-			int [] a = getRandomArray(r, n, min, max);
+			ArrayUtil.print(a);
 
-			print(a);
-			reverse(a);
-			print(a);
-		}
+			if (val == 0)
+				break;		}
 
 		System.out.println("Tekrar yapıyor musunuz?");
 	}

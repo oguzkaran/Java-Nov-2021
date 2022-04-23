@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: ArrayUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 10.04.2022
+	LAST UPDATE	: 23.04.2022
 
 	Utility class for array operations
 
@@ -64,6 +64,15 @@ public class ArrayUtil {
     }
 
     public static void print(int [] a)
+    {
+        for (int i = 0; i < a.length; ++i)
+            System.out.printf("%d ", a[i]);
+
+        System.out.println();
+    }
+
+
+    public static void print(long [] a)
     {
         for (int i = 0; i < a.length; ++i)
             System.out.printf("%d ", a[i]);

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: NumberUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 09.04.2022
+	LAST UPDATE	: 23.04.2022
 	
 	Utility class for numeric operations
 	
@@ -52,6 +52,12 @@ public class NumberUtil {
 		
 		return 1;
 	}
+
+	public static int [] getDigits(long a)
+	{
+		//TODO:
+	}
+
 	
 	public static int getDigitsPowSum(int val)
 	{
