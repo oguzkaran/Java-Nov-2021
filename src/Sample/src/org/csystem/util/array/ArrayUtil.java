@@ -78,6 +78,20 @@ public class ArrayUtil {
             bubbleSortAscending(a);
     }
 
+    public static void drawHistogram(int [] data, int count, char ch)
+    {
+        int maxVal = max(data);
+
+        for (int i = 0; i < data.length; ++i) {
+            int n = (int)Math.floor(data[i] * (double)count / maxVal);
+
+            while (n-- > 0)
+                System.out.print(ch);
+
+            System.out.println();
+        }
+    }
+
     public static void fillRandomArray(Random r, int [] a, int min, int max)
     {
         for (int i = 0; i < a.length; ++i)
@@ -109,7 +123,6 @@ public class ArrayUtil {
 
         return counts;
     }
-
 
     public static int [] getRandomArray(Random r, int count, int min, int max) //[min, max]
     {
@@ -206,6 +219,12 @@ public class ArrayUtil {
     }
 
     public static void reverse(int [] a)
+    {
+        for (int i = 0;i < a.length / 2; ++i)
+            swap(a, i, a.length - 1 - i);
+    }
+
+    public static void reverse(char [] a)
     {
         for (int i = 0;i < a.length / 2; ++i)
             swap(a, i, a.length - 1 - i);

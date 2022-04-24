@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: StringUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 10.04.2022
+	LAST UPDATE	: 24.04.2022
 	
 	Utility class for string operations
 	
@@ -9,6 +9,8 @@
 	All Rights Free
 ----------------------------------------------------------------*/
 package org.csystem.util.string;
+
+import org.csystem.util.array.ArrayUtil;
 
 import java.util.Random;
 
@@ -20,16 +22,12 @@ public class StringUtil {
 
 	public static String changeCase(String s)
 	{
-		String str = "";
-		int len = s.length();
+		char [] c = s.toCharArray();
 
-		for (int i = 0; i < len; ++i) {
-			char ch = s.charAt(i);
+		for (int i = 0; i < c.length; ++i)
+			c[i] = Character.isUpperCase(c[i]) ? Character.toLowerCase(c[i]) : Character.toUpperCase(c[i]);
 
-			str += Character.isUpperCase(ch) ? Character.toLowerCase(ch) : Character.toUpperCase(ch);
-		}
-
-		return str;
+		return String.valueOf(c);
 	}
 
 	public static boolean containsAll(String s, String text) 
@@ -82,14 +80,13 @@ public class StringUtil {
 
 	public static String getRandomText(Random r, int count, String text) 
 	{
-		String str = "";
-
+		char [] c = new char[count];
 		int len = text.length();
 
 		for (int i = 0; i < count; ++i)
-			str += text.charAt(r.nextInt(len));
+			c[i] = text.charAt(r.nextInt(len));
 
-		return str;
+		return String.valueOf(c);
 	}
 
 	public static String getRandomTextEN(int count) 
@@ -193,15 +190,13 @@ public class StringUtil {
 		return (length <= len) ? s : (s + (ch + "").repeat(length - len));
 	}
 
-
 	public static String reversed(String s)
 	{
-		String rev = "";
+		char [] c = s.toCharArray();
 
-		for (int i = s.length() - 1; i >= 0; --i)
-			rev += s.charAt(i);
+		ArrayUtil.reverse(c);
 
-		return rev;
+		return String.valueOf(c);
 	}
 
 	public static String trimLeading(String s)
