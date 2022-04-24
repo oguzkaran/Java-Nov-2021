@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: ArrayUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 23.04.2022
+	LAST UPDATE	: 24.04.2022
 
 	Utility class for array operations
 
@@ -100,6 +100,17 @@ public class ArrayUtil {
         fillRandomArray(new Random(), a, min, bound);
     }
 
+    public static int [] getHistogramData(int [] a, int n) //[0, n]
+    {
+        int[] counts = new int[n + 1];
+
+        for (int i = 0; i < a.length; ++i)
+            ++counts[a[i]];
+
+        return counts;
+    }
+
+
     public static int [] getRandomArray(Random r, int count, int min, int max) //[min, max]
     {
         int [] a = new int[count];
@@ -148,6 +159,23 @@ public class ArrayUtil {
                 result = a[i];
 
         return result;
+    }
+
+    public static int partition(int [] a, int threshold)
+    {
+        int partitionIndex = 0;
+
+        while (partitionIndex != a.length && a[partitionIndex] < threshold)
+            ++partitionIndex;
+
+        if (partitionIndex == a.length)
+            return partitionIndex;
+
+        for (int i = partitionIndex + 1; i < a.length; ++i)
+            if (a[i] < threshold)
+                swap(a, i, partitionIndex++);
+
+        return partitionIndex;
     }
 
     public static void print(int [] a)
