@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: ArrayUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 24.04.2022
+	LAST UPDATE	: 30.04.2022
 
 	Utility class for array operations
 
@@ -157,7 +157,7 @@ public class ArrayUtil {
         int result = a[0];
 
         for (int i = 1; i < a.length; ++i)
-            if (a[i] < result)
+            if (result < a[i])
                 result = a[i];
 
         return result;
@@ -168,7 +168,7 @@ public class ArrayUtil {
         int result = a[0];
 
         for (int i = 1; i < a.length; ++i)
-            if (result < a[i])
+            if (result > a[i])
                 result = a[i];
 
         return result;
@@ -195,6 +195,7 @@ public class ArrayUtil {
     {
         print(1, a);
     }
+
     public static void print(int n, int [] a)
     {
         for (int i = 0; i < a.length; ++i)
