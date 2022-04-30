@@ -1,26 +1,40 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden gün, ay ve yıl bilgilerine ilişkin tarihin aşağıdaki açıklamalara
-	göre haftanın hangi gününe geldiği bilgisini döndüren getDayOfWeek isimli metodu yazarak aşağıdaki açıklamalara uygun
-	programı yazınız.
-	Açıklamalar:
-	- Metot geçersiz tarih için -1 değerine geri dönecektir.
-	- 01.01.1900 tarihinden öncesi geçersiz kabul edilecektir.
-	- Haftanın günü 01.01.1900 ile verilen tarih arasında (verilen tarih dahil) geçen gün sayısının 7 ile bölümünden elde
-	edilen kalan ile bulunabilir. Değer 0(sıfır) ise "Pazar", 1(bir) ise "Pazartesi", ..., 6 ise Cumartesi günlerine
-	karşılık gelir.
-	- Parametresi ise aldığı gün, ay ve yıl bilgilerine ilişkin tarihin hafta sonu olup olmadığını test eden isWeekend
-	ve hafta içi olup olmadığını test eden isWeekday metotlarını da yazınız. Metotlar tarih geçerlilik kontrolü
-	yapmayacaktır
-	 (İleride daha iyisi yazılacaktır)
+	Sınıf Çalışması: Klavyeden alınan int türden bir n sayısı için n elemanları bir String dizisi yaratınız. Bu dizinin
+	her bir elemanını [5, 15] arasında belirlenmiş sayı kadar Türkçe karakterlerden oluşan yazılarla doldurunuz. Bu işlemdem
+	sonra StringUtil StringUtil sınıfı içerisinde yazacağınız parametresi ile aldığı bir String dizisinin elemanlarını,
+	yine diğer parametresi ile aldığı bir ayraç ile birleştirilmiş bir String'e geri dönen join isimli metodu çağırarak
+	sonucu ekranda gösteriniz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import org.csystem.app.datetime.DateApp;
+import java.util.Scanner;
+
+import static org.csystem.util.numeric.NumberUtil.numberToText3DigitsTR;
 
 class App {
-	public static void main(String [] args)
+	public static void main(String[] args)
 	{
-		DateApp.run();
+		NumberToText3DigitsTRTest.run();
 	}
 }
+
+class NumberToText3DigitsTRTest {
+	public static void run()
+	{
+		Scanner kb = new Scanner(System.in);
+
+		for (;;) {
+			System.out.print("Bir sayı giriniz:");
+			int a = Integer.parseInt(kb.nextLine());
+
+			System.out.printf("%d:%s%n", a, numberToText3DigitsTR(a));
+
+			if (a == 0)
+				break;
+		}
+
+		System.out.println("Tekrar yapıyor musunuz?");
+	}
+}
+
 

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: NumberUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 23.04.2022
+	LAST UPDATE	: 30.04.2022
 	
 	Utility class for numeric operations
 	
@@ -15,6 +15,48 @@ import static java.lang.Math.log10;
 import static java.lang.Math.pow;
 
 public class NumberUtil {
+	public static String [] ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+	public static String [] tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "sekisen", "doksan"};
+
+	public static int [] getDigits(long a, int n)
+	{
+		int [] digits = new int[a != 0 ? (int)(log10(abs(a)) / n) + 1 : 1];
+		int powOfTen = (int)pow(10, n);
+
+		a = abs(a);
+
+		for (int i = digits.length - 1; i >= 0; digits[i--] = (int)(a % powOfTen), a /= powOfTen)
+			;
+
+		return digits;
+	}
+
+
+	public static String getTextTByDigitsTR(int a, int b, int c, String str)
+	{
+		if (a != 0) {
+			if (a != 1)
+				str += ones[a];
+			str += "yüz";
+		}
+
+		str += tens[b];
+		str += ones[c];
+
+		return str;
+	}
+
+	public static String numberToText3DigitsTR(int val)
+	{
+		if (val == 0)
+			return "sıfır";
+
+		String str = val < 0 ? "eksi" : "";
+
+		val = abs(val);
+
+		return getTextTByDigitsTR(val / 100, val % 100 / 10, val % 10, str);
+	}
 
 	public static int digitsCount(long a)
 	{
@@ -56,15 +98,18 @@ public class NumberUtil {
 
 	public static int [] getDigits(long a)
 	{
-		a = Math.abs(a);
-		int [] digits = new int[digitsCount(a)];
-
-		for (int i = digits.length - 1; i >= 0; digits[i] = (int)(a % 10), --i, a /= 10)
-			;
-
-		return digits;
+		return getDigits(a, 1);
 	}
 
+	public static int [] getDigitsInThrees(long a)
+	{
+		return getDigits(a, 3);
+	}
+
+	public static int [] getDigitsInTwos(long a)
+	{
+		return getDigits(a, 2);
+	}
 	
 	public static int getDigitsPowSum(int val)
 	{

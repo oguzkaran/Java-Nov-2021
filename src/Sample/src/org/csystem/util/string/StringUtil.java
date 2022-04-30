@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: StringUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 24.04.2022
+	LAST UPDATE	: 30.04.2022
 	
 	Utility class for string operations
 	
@@ -159,6 +159,13 @@ public class StringUtil {
 	public static boolean isPangramEN(String s) 
 	{
 		return containsAll(s.toLowerCase(), "abcdefghijklmnopqrstuwxvyz");
+	}
+
+	public static String join(String [] s, char ch)
+	{
+		//TODO:
+
+		return "";
 	}
 
 	public static boolean isPangramTR(String s)
