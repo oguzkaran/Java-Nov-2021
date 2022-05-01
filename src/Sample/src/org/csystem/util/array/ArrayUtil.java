@@ -152,7 +152,6 @@ public class ArrayUtil {
         return getRandomArray(new Random(), count, min, bound);
     }
 
-
     public static int [][] getRandomMatrix(int m, int n, int min, int max)
     {
         return getRandomMatrix(new Random(), m, n, min, max);
@@ -166,6 +165,30 @@ public class ArrayUtil {
             a[i] = getRandomArray(r, n, min, max);
 
         return a;
+    }
+
+    public static int [][] getRandomSquareMatrix(int n, int min, int max)
+    {
+        return getRandomSquareMatrix(new Random(), n, min, max);
+    }
+
+    public static int [][] getRandomSquareMatrix(Random r, int n, int min, int max)
+    {
+       return getRandomMatrix(r, n, n, min, max);
+    }
+
+    public static boolean isMatrix(int [][] a)
+    {
+        for (int i = 1; i < a.length; ++i)
+            if (a[i].length != a[0].length)
+                return false;
+
+        return true;
+    }
+
+    public static boolean isSquareMatrix(int [][] a)
+    {
+        return isMatrix(a) && a[0].length == a.length;
     }
 
     public static int max(int [] a)
@@ -241,6 +264,17 @@ public class ArrayUtil {
             System.out.println(s[i]);
     }
 
+    public static void print(int [][] a)
+    {
+        print(1, a);
+    }
+
+    public static void print(int n, int [][] a)
+    {
+        for (int i = 0; i < a.length; ++i)
+            print(n, a[i]);
+    }
+
     public static void reverse(int [] a)
     {
         for (int i = 0;i < a.length / 2; ++i)
@@ -292,5 +326,10 @@ public class ArrayUtil {
             total += a[i];
 
         return total;
+    }
+
+    public static int [][] transposed(int [][] a)
+    {
+        //TODO:
     }
 }
