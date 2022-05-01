@@ -1,40 +1,37 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Klavyeden alınan int türden bir n sayısı için n elemanları bir String dizisi yaratınız. Bu dizinin
-	her bir elemanını [5, 15] arasında belirlenmiş sayı kadar Türkçe karakterlerden oluşan yazılarla doldurunuz. Bu işlemdem
-	sonra StringUtil StringUtil sınıfı içerisinde yazacağınız parametresi ile aldığı bir String dizisinin elemanlarını,
-	yine diğer parametresi ile aldığı bir ayraç ile birleştirilmiş bir String'e geri dönen join isimli metodu çağırarak
-	sonucu ekranda gösteriniz
+	Java 5 ile birlikte aşağıdaki gibi ikinci köşeli parantez içerisinde yazılan uzunluk, matrisin (mantıksal) sütun
+	sayısı anlamına gelir. Yani dizi dizisinin herbir elemanının gösterdiği diziler de o uzunlukta otomatik olarak
+	yaratılırlar
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import java.util.Scanner;
+import org.csystem.util.array.ArrayUtil;
 
-import static org.csystem.util.numeric.NumberUtil.numberToText3DigitsTR;
+import java.util.Random;
+import java.util.Scanner;
 
 class App {
 	public static void main(String[] args)
 	{
-		NumberToText3DigitsTRTest.run();
-	}
-}
-
-class NumberToText3DigitsTRTest {
-	public static void run()
-	{
 		Scanner kb = new Scanner(System.in);
+		Random r = new Random();
 
-		for (;;) {
-			System.out.print("Bir sayı giriniz:");
-			int a = Integer.parseInt(kb.nextLine());
+		System.out.print("Satır sayısını giriniz:");
+		int m = Integer.parseInt(kb.nextLine());
 
-			System.out.printf("%d:%s%n", a, numberToText3DigitsTR(a));
+		System.out.print("Sütun sayısını giriniz:");
+		int n = Integer.parseInt(kb.nextLine());
 
-			if (a == 0)
-				break;
+		int [][] a;
+
+		a = ArrayUtil.getRandomMatrix(r, m, n, 0, 99);
+
+		for (int i = 0; i < a.length; ++i) {
+			for (int j = 0; j < a[i].length; ++j)
+				System.out.printf("%02d ", a[i][j]);
+
+			System.out.println();
 		}
-
-		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
-
 

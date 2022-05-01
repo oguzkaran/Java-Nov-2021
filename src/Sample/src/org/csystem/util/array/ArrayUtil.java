@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: ArrayUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 30.04.2022
+	LAST UPDATE	: 01.05.2022
 
 	Utility class for array operations
 
@@ -152,6 +152,22 @@ public class ArrayUtil {
         return getRandomArray(new Random(), count, min, bound);
     }
 
+
+    public static int [][] getRandomMatrix(int m, int n, int min, int max)
+    {
+        return getRandomMatrix(new Random(), m, n, min, max);
+    }
+
+    public static int [][] getRandomMatrix(Random r, int m, int n, int min, int max)
+    {
+        int [][] a = new int[m][];
+
+        for (int i = 0; i < m; ++i)
+            a[i] = getRandomArray(r, n, min, max);
+
+        return a;
+    }
+
     public static int max(int [] a)
     {
         int result = a[0];
@@ -217,6 +233,12 @@ public class ArrayUtil {
             System.out.printf(fmt, a[i]);
 
         System.out.println();
+    }
+
+    public static void print(String [] s)
+    {
+        for (int i = 0; i < s.length; ++i)
+            System.out.println(s[i]);
     }
 
     public static void reverse(int [] a)

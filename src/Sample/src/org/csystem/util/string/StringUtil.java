@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: StringUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 30.04.2022
+	LAST UPDATE	: 01.05.2022
 	
 	Utility class for string operations
 	
@@ -109,6 +109,37 @@ public class StringUtil {
 		return getRandomText(r, count, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
 	}
 
+	public static String [] getRandomTextsEN(Random r, int count, int min, int max) //[min, max]
+	{
+		String [] texts = new String[count];
+
+		while (count-- > 0)
+			texts[count] = getRandomTextEN(r, r.nextInt(min, max));
+
+		return texts;
+	}
+
+	public static String [] getRandomTextsEN(int count, int min, int max)
+	{
+		return getRandomTextsEN(new Random(), count, min, max);
+	}
+
+	public static String [] getRandomTextsTR(Random r, int count, int min, int max) //[min, max]
+	{
+		String [] texts = new String[count];
+
+		while (count-- > 0)
+			texts[count] = getRandomTextTR(r, r.nextInt(min, max));
+
+		return texts;
+	}
+
+	public static String [] getRandomTextsTR(int count, int min, int max)
+	{
+		return getRandomTextsTR(new Random(), count, min, max);
+	}
+
+
 	public static boolean isIdentifier(String s)
 	{
 		if (s.isBlank() || s.equals("_"))
@@ -161,11 +192,19 @@ public class StringUtil {
 		return containsAll(s.toLowerCase(), "abcdefghijklmnopqrstuwxvyz");
 	}
 
-	public static String join(String [] s, char ch)
+	public static String join(String [] s, String delimiter)
 	{
-		//TODO:
+		String str = "";
 
-		return "";
+		for (int i = 0; i < s.length; ++i)
+			str += s[i] + delimiter;
+
+		return str.substring(0, str.length() - delimiter.length());
+	}
+
+	public static String join(String [] s, char delimiter)
+	{
+		return join(s, delimiter + "");
 	}
 
 	public static boolean isPangramTR(String s)
