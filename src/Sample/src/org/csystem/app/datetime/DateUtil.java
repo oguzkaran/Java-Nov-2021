@@ -10,28 +10,48 @@ public class DateUtil {
 
 	public static void displayDateTR(int day, int month, int year)
 	{
-		int dayOfWeek = getDayOfWeek(day, month, year);
-		
-		if (dayOfWeek == -1) {
+		String str = getDateTR(day, month, year);
+
+		if (str.isEmpty()) {
 			System.out.println("Geçersiz tarih");
 			return;
 		}
 
-		System.out.printf("%d %s %d %s%n", day, monthsTR[month], year, daysOfWeekTR[dayOfWeek]);
+		System.out.println(str);
 		System.out.println(isWeekend(day, month, year) ? "Bugün kurs var. Tekrar yaptınız mı?" : "Kurs günü yaklaşıyor. Tekrar yapmayı unutmayınız");
 	}
 
 	public static void displayDateEN(int day, int month, int year)
 	{
-		int dayOfWeek = getDayOfWeek(day, month, year);
+		String str = getDateTR(day, month, year);
 
-		if (dayOfWeek == -1) {
+		if (str.isEmpty()) {
 			System.out.println("Invalid date");
 			return;
 		}
 
-		System.out.printf("%d%s %s %d %s%n", day, getDaySuffix(day), monthsEN[month], year, daysOfWeekEN[dayOfWeek]);
+		System.out.println(str);
 		System.out.println(isWeekend(day, month, year) ? "That is the course day. Did you review?" : "Course day is coming. Do not forget to review?");
+	}
+
+	public static String getDateTR(int day, int month, int year)
+	{
+		int dayOfWeek = getDayOfWeek(day, month, year);
+
+		if (dayOfWeek == -1)
+			return "";
+
+		return String.format("%d %s %d %s", day, monthsTR[month], year, daysOfWeekTR[dayOfWeek]);
+	}
+
+	public static String getDateEN(int day, int month, int year)
+	{
+		int dayOfWeek = getDayOfWeek(day, month, year);
+
+		if (dayOfWeek == -1)
+			return "";
+
+		return String.format("%d%s %s %d %s", day, getDaySuffix(day), monthsEN[month], year, daysOfWeekEN[dayOfWeek]);
 	}
 
 	public static String getDaySuffix(int day)

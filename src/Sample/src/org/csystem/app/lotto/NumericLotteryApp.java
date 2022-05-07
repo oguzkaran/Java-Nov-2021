@@ -20,9 +20,7 @@ public class NumericLotteryApp {
 
             if (n <= 0)
                 break;
-
-            while (n-- > 0)
-                ArrayUtil.print(2, numericLottery.getNumbers());
+            ArrayUtil.print(2, numericLottery.getNumbers(n));
         }
 
         System.out.println("Tekrar yapıyor musunuz?");

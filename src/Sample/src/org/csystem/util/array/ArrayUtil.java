@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: ArrayUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 01.05.2022
+	LAST UPDATE	: 07.05.2022
 
 	Utility class for array operations
 
@@ -202,6 +202,18 @@ public class ArrayUtil {
         return result;
     }
 
+    public static int max(int [][] a)
+    {
+        int result = Integer.MIN_VALUE;
+
+        for (int i = 0; i < a.length; ++i)
+            for (int j = 0; j < a[i].length; ++j)
+                if (result < a[i][j])
+                    result = a[i][j];
+
+        return result;
+    }
+
     public static int min(int [] a)
     {
         int result = a[0];
@@ -209,6 +221,18 @@ public class ArrayUtil {
         for (int i = 1; i < a.length; ++i)
             if (result > a[i])
                 result = a[i];
+
+        return result;
+    }
+
+    public static int min(int [][] a)
+    {
+        int result = Integer.MAX_VALUE;
+
+        for (int i = 0; i < a.length; ++i)
+            for (int j = 0; j < a[i].length; ++j)
+                if (a[i][j] < result)
+                    result = a[i][j];
 
         return result;
     }
@@ -324,6 +348,16 @@ public class ArrayUtil {
 
         for (int i = 0; i < a.length; ++i)
             total += a[i];
+
+        return total;
+    }
+
+    public static int sum(int [][] a)
+    {
+        int total = 0;
+
+        for (int i = 0; i < a.length; ++i)
+            total += sum(a[i]);
 
         return total;
     }
