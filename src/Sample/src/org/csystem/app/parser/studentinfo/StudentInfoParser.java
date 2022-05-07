@@ -17,6 +17,11 @@ public class StudentInfoParser {
 
     public StudentInfoParser(String str)
     {
+        studentInfo = parse(str);
+    }
+
+    public static StudentInfo parse(String str)
+    {
         /*
             <isim>:<gg/aa/yyyy>:<ders adı>:<vize>:<final>
 	        Oğuz Karan:10/09/1976:Matematik:45:78
@@ -27,12 +32,15 @@ public class StudentInfoParser {
 
         //...
 
-        studentInfo = new StudentInfo();
+        StudentInfo studentInfo = new StudentInfo();
+
         studentInfo.name = studentInfoStr[0];
         studentInfo.birthDate = getBirthDate(studentInfoStr[1]);
         studentInfo.lectureName = studentInfoStr[2];
         studentInfo.midtermGrade = Integer.parseInt(studentInfoStr[3]);
         studentInfo.finalGrade = Integer.parseInt(studentInfoStr[4]);
+
+        return studentInfo;
     }
 
     //...

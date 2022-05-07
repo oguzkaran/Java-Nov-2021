@@ -82,8 +82,8 @@ public class ArrayUtil {
     {
         int maxVal = max(data);
 
-        for (int i = 0; i < data.length; ++i) {
-            int n = (int)Math.floor(data[i] * (double)count / maxVal);
+        for (int val : data) {
+            int n = (int)Math.floor(val * (double)count / maxVal);
 
             while (n-- > 0)
                 System.out.print(ch);
@@ -118,8 +118,8 @@ public class ArrayUtil {
     {
         int[] counts = new int[n + 1];
 
-        for (int i = 0; i < a.length; ++i)
-            ++counts[a[i]];
+        for (int val : a)
+            ++counts[val];
 
         return counts;
     }
@@ -206,10 +206,10 @@ public class ArrayUtil {
     {
         int result = Integer.MIN_VALUE;
 
-        for (int i = 0; i < a.length; ++i)
-            for (int j = 0; j < a[i].length; ++j)
-                if (result < a[i][j])
-                    result = a[i][j];
+        for (int[] array : a)
+            for (int val : array)
+                if (result < val)
+                    result = val;
 
         return result;
     }
@@ -229,10 +229,10 @@ public class ArrayUtil {
     {
         int result = Integer.MAX_VALUE;
 
-        for (int i = 0; i < a.length; ++i)
-            for (int j = 0; j < a[i].length; ++j)
-                if (a[i][j] < result)
-                    result = a[i][j];
+        for (int[] array : a)
+            for (int val : array)
+                if (val < result)
+                    result = val;
 
         return result;
     }
@@ -261,8 +261,8 @@ public class ArrayUtil {
 
     public static void print(int n, int [] a)
     {
-        for (int i = 0; i < a.length; ++i)
-            System.out.printf("%0" + n + "d ", a[i]);
+        for (int val : a)
+            System.out.printf("%0" + n + "d ", val);
 
         System.out.println();
     }
@@ -276,16 +276,16 @@ public class ArrayUtil {
     {
         String fmt = String.format("%%0%dd ", n);
 
-        for (int i = 0; i < a.length; ++i)
-            System.out.printf(fmt, a[i]);
+        for (long val : a)
+            System.out.printf(fmt, val);
 
         System.out.println();
     }
 
     public static void print(String [] s)
     {
-        for (int i = 0; i < s.length; ++i)
-            System.out.println(s[i]);
+        for (String str : s)
+            System.out.println(str);
     }
 
     public static void print(int [][] a)
@@ -295,8 +295,8 @@ public class ArrayUtil {
 
     public static void print(int n, int [][] a)
     {
-        for (int i = 0; i < a.length; ++i)
-            print(n, a[i]);
+        for (int[] array : a)
+            print(n, array);
     }
 
     public static void reverse(int [] a)
@@ -346,8 +346,8 @@ public class ArrayUtil {
     {
         int total = 0;
 
-        for (int i = 0; i < a.length; ++i)
-            total += a[i];
+        for (int val : a)
+            total += val;
 
         return total;
     }
@@ -356,8 +356,8 @@ public class ArrayUtil {
     {
         int total = 0;
 
-        for (int i = 0; i < a.length; ++i)
-            total += sum(a[i]);
+        for (int[] array : a)
+            total += sum(array);
 
         return total;
     }
