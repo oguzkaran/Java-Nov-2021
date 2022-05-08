@@ -1,15 +1,18 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Aşağıdaki örnekte herbir adımda String dizisinin elemanı olan String referansları elde edilmiştir
+
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 class App {
 	public static void main(String[] args)
 	{
-		String [] cities = {"ankara", "istanbul", "izmir", "zonguldak"};
 
-		for (String city : cities)
-			System.out.println(city);
 	}
 }
 
+class Date {
+	private int m_day;
+	private int m_month;
+	private int m_year;
+	//...
+}
