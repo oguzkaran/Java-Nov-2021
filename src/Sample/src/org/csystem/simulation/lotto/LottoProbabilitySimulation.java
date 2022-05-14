@@ -26,13 +26,13 @@ public class LottoProbabilitySimulation {
 		for (int i = 0; i < m_count; ++i) {
 			lotto.play();
 
-			if (lotto.winGame1)
+			if (lotto.isWinGame1())
 				++winCount1;
 
-			if (lotto.winGame2)
+			if (lotto.isWinGame2())
 				++winCount2;
 
-			if (lotto.winGame3)
+			if (lotto.isWinGame3())
 				++winCount3;
 		}
 		m_game1Prob = (double)winCount1 / m_count;

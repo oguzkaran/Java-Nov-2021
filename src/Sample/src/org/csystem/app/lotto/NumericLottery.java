@@ -3,7 +3,7 @@ package org.csystem.app.lotto;
 import java.util.Random;
 
 public class NumericLottery {
-    private Random m_random;
+    private final Random m_random;
 
     private boolean [] getFlags()
     {
@@ -45,10 +45,6 @@ public class NumericLottery {
         m_random = random;
     }
 
-    public void setRandom(Random random)
-    {
-        m_random = random;
-    }
 
     public int [] getNumbers()
     {

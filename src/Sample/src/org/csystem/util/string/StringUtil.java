@@ -11,11 +11,15 @@
 package org.csystem.util.string;
 
 import org.csystem.util.array.ArrayUtil;
-import org.csystem.util.numeric.NumberUtil;
 
 import java.util.Random;
 
 public class StringUtil {
+	private static final String ms_alphabetTR = "abcçdefgğhıijklmnoöprsştuüvyz";
+	private static final String ms_alphabetEN = "abcdefghijklmnopqrstuwxvyz";
+	private static final String ms_alphabetAllTR = ms_alphabetTR + "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+	private static final String ms_alphabetAllEN = ms_alphabetEN + "ABCDEFGHIJKLMNOPQRSTUWXVYZ";
+
 	private StringUtil()
 	{}
 
@@ -100,7 +104,7 @@ public class StringUtil {
 
 	public static String getRandomTextEN(Random r, int count)
 	{
-		return getRandomText(r, count, "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ");
+		return getRandomText(r, count, ms_alphabetAllEN);
 	}
 
 	public static String getRandomTextTR(int count) 
@@ -110,7 +114,7 @@ public class StringUtil {
 
 	public static String getRandomTextTR(Random r, int count) 
 	{
-		return getRandomText(r, count, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
+		return getRandomText(r, count, ms_alphabetAllTR);
 	}
 
 	public static String [] getRandomTextsEN(Random r, int count, int min, int max) //[min, max]
@@ -193,7 +197,7 @@ public class StringUtil {
 
 	public static boolean isPangramEN(String s) 
 	{
-		return containsAll(s.toLowerCase(), "abcdefghijklmnopqrstuwxvyz");
+		return containsAll(s.toLowerCase(), ms_alphabetEN);
 	}
 
 	public static String join(String [] s, String delimiter)
@@ -213,7 +217,7 @@ public class StringUtil {
 
 	public static boolean isPangramTR(String s)
 	{
-		return containsAll(s.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");
+		return containsAll(s.toLowerCase(), ms_alphabetTR);
 	}
 
 	public static String padLeading(String s, int length)

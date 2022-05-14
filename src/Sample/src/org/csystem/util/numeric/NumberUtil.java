@@ -15,8 +15,8 @@ import static java.lang.Math.log10;
 import static java.lang.Math.pow;
 
 public class NumberUtil {
-	private static String [] ms_ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
-	private static String [] ms_tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+	private static final String [] ms_ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+	private static final String [] ms_tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
 
 	private static int [] getDigits(long a, int n)
 	{
