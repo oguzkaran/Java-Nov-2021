@@ -10,9 +10,9 @@ public class LottoProbabilitySimulationApp {
 		LottoProbabilitySimulation simulation = new LottoProbabilitySimulation(count);
 
 		simulation.run();
-		System.out.printf("1.oyun için oyuncunun kazanma olasılığı:%f%n", simulation.game1Prob);
-		System.out.printf("2.oyun için oyuncunun kazanma olasılığı:%f%n", simulation.game2Prob);
-		System.out.printf("3.oyun için oyuncunun kazanma olasılığı:%f%n", simulation.game3Prob);
+		System.out.printf("1.oyun için oyuncunun kazanma olasılığı:%f%n", simulation.getGame1Prob());
+		System.out.printf("2.oyun için oyuncunun kazanma olasılığı:%f%n", simulation.getGame2Prob());
+		System.out.printf("3.oyun için oyuncunun kazanma olasılığı:%f%n", simulation.getGame3Prob());
 	}
 }
 

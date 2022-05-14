@@ -34,11 +34,11 @@ public class StudentInfoParser {
 
         StudentInfo studentInfo = new StudentInfo();
 
-        studentInfo.name = studentInfoStr[0];
-        studentInfo.birthDate = getBirthDate(studentInfoStr[1]);
-        studentInfo.lectureName = studentInfoStr[2];
-        studentInfo.midtermGrade = Integer.parseInt(studentInfoStr[3]);
-        studentInfo.finalGrade = Integer.parseInt(studentInfoStr[4]);
+        studentInfo.setName(studentInfoStr[0]);
+        studentInfo.setBirthDate(getBirthDate(studentInfoStr[1]));
+        studentInfo.setLectureName(studentInfoStr[2]);
+        studentInfo.setMidtermGrade(Integer.parseInt(studentInfoStr[3]));
+        studentInfo.setFinalGrade(Integer.parseInt(studentInfoStr[4]));
 
         return studentInfo;
     }

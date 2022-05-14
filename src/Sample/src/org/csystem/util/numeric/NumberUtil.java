@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: NumberUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 08.05.2022
+	LAST UPDATE	: 14.05.2022
 	
 	Utility class for numeric operations
 	
@@ -56,6 +56,9 @@ public class NumberUtil {
 
 		return getTextTByDigitsTR(val / 100, val % 100 / 10, val % 10, str);
 	}
+
+	private NumberUtil()
+	{}
 
 	public static int digitsCount(long a)
 	{

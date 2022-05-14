@@ -5,14 +5,14 @@ import org.csystem.game.lotto.Lotto;
 import java.util.Random;
 
 public class LottoProbabilitySimulation {
-	public int count;
-	public double game1Prob;
-	public double game2Prob;
-	public double game3Prob;
+	private int m_count;
+	private double m_game1Prob;
+	private double m_game2Prob;
+	private double m_game3Prob;
 
 	public LottoProbabilitySimulation(int n)
 	{
-		count = n;
+		m_count = n;
 	}
 
 	public void run()
@@ -23,7 +23,7 @@ public class LottoProbabilitySimulation {
 
 		winCount1 = winCount2 = winCount3 = 0;
 
-		for (int i = 0; i < count; ++i) {
+		for (int i = 0; i < m_count; ++i) {
 			lotto.play();
 
 			if (lotto.winGame1)
@@ -35,9 +35,29 @@ public class LottoProbabilitySimulation {
 			if (lotto.winGame3)
 				++winCount3;
 		}
-		game1Prob = (double)winCount1 / count;
-		game2Prob = (double)winCount2 / count;
-		game3Prob = (double)winCount3 / count;
+		m_game1Prob = (double)winCount1 / m_count;
+		m_game2Prob = (double)winCount2 / m_count;
+		m_game3Prob = (double)winCount3 / m_count;
+	}
+
+	public int getCount()
+	{
+		return m_count;
+	}
+
+	public double getGame1Prob()
+	{
+		return m_game1Prob;
+	}
+
+	public double getGame2Prob()
+	{
+		return m_game2Prob;
+	}
+
+	public double getGame3Prob()
+	{
+		return m_game3Prob;
 	}
 }
 

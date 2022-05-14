@@ -15,7 +15,7 @@ public class CrapsSimulation {
 			
 			craps.play();
 			
-			if (craps.win)
+			if (craps.isWin())
 				++winCount;
 		}
 		

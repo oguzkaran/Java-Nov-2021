@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: ArrayUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 08.05.2022
+	LAST UPDATE	: 14.05.2022
 
 	Utility class for array operations
 
@@ -64,6 +64,9 @@ public class ArrayUtil {
             a[i] = max;
         }
     }
+
+    private ArrayUtil()
+    {}
 
     public static void bubbleSort(int [] a)
     {
