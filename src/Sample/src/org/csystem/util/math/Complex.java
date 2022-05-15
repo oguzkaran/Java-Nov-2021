@@ -1,9 +1,9 @@
 /*----------------------------------------------------------------
 	FILE		: Complex.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 14.05.2022
+	LAST UPDATE	: 15.05.2022
 	
-	Complex class that represents a "Complex Number"
+	Immutable Complex class that represents a "Complex Number"
 	
 	Copyleft (c) 1993 C and System Programmers Association
 	All Rights Free
@@ -11,109 +11,108 @@
 package org.csystem.util.math;
 
 
-import static java.lang.Math.sqrt;
-
 public class Complex {
-	public double real;
-	public double imag;	
-	
-	private static Complex add(double a1, double b1, double a2, double b2)
-	{
-		return new Complex(a1 + a2, b1 + b2);		
-	}
-	
-	private static Complex subtract(double a1, double b1, double a2, double b2)
-	{
-		return add(a1, b1, -a2, -b2);			
-	}
-	
+	private final double m_real;
+	private final double m_imag;
+
 	public Complex()
 	{
+		m_real = m_imag = 0;
 	}
-	
-	public Complex(double a)
+
+	public Complex(double real)
 	{
-		real = a;
+		m_real = real;
+		m_imag = 0;
 	}
-	
-	public Complex(double a, double b)
+
+	public Complex(double real, double imag)
 	{
-		real = a;
-		imag = b;
+		m_real = real;
+		m_imag = imag;
 	}
-	
+
+	public double getReal()
+	{
+		return m_real;
+	}
+
+	public double getImag()
+	{
+		return m_imag;
+	}
+
 	public double getLength()
 	{
-		return sqrt(real * real + imag * imag);
+		return ComplexCommonUtil.length(m_real, m_imag);
 	}
-	
+
 	public double getNorm()
 	{
 		return getLength();
-	}	
-	
+	}
+
 	public Complex getConjugate()
 	{
-		return new Complex(real, -imag);
+		return new Complex(m_real, -m_imag);
 	}
-	
+
 	//add methods
 	public static Complex add(double value, Complex z)
 	{
-		return add(value, 0, z.real, z.imag);		
+		return ComplexCommonUtil.toComplex(ComplexCommonUtil.add(value, 0, z.m_real, z.m_imag));
 	}
-	
+
 	public Complex add(Complex other)
 	{
-		return add(real, imag, other.real, other.imag);
+		return ComplexCommonUtil.toComplex(ComplexCommonUtil.add(m_real, m_imag, other.m_real, other.m_imag));
 	}
-	
+
 	public Complex add(double value)
 	{
-		return add(real, imag, value, 0);				
+		return ComplexCommonUtil.toComplex(ComplexCommonUtil.add(m_real, m_imag, value, 0));
 	}
-	
+
 	//subtract methods
 	public static Complex subtract(double value, Complex z)
 	{
-		return subtract(value, 0, z.real, z.imag);		
-	}
-	
-	public Complex subtract(Complex other)
-	{
-		return subtract(real, imag, other.real, other.imag);
-	}
-	
-	public Complex subtract(double value)
-	{
-		return subtract(real, imag, value, 0);				
+		return ComplexCommonUtil.toComplex(ComplexCommonUtil.subtract(value, 0, z.m_real, z.m_imag));
 	}
 
-	
+	public Complex subtract(Complex other)
+	{
+		return ComplexCommonUtil.toComplex(ComplexCommonUtil.subtract(m_real, m_imag, other.m_real, other.m_imag));
+	}
+
+	public Complex subtract(double value)
+	{
+		return ComplexCommonUtil.toComplex(ComplexCommonUtil.subtract(m_real, m_imag, value, 0));
+	}
+
 	//inc methods
-	public void inc(double value)
+	public Complex inc(double value)
 	{
-		real += value;
+		return add(value);
 	}
-	
-	public void inc()
+
+	public Complex inc()
 	{
-		inc(1);
+		return inc(1);
 	}
-	
+
 	//dec methods
-	public void dec(double value)
+	public Complex dec(double value)
 	{
-		inc(-value);
+		return inc(-value);
 	}
-	
-	public void dec()
+
+	public Complex dec()
 	{
-		dec(1);
+		return dec(1);
 	}
-	
+
 	public String toString()
 	{
-		return String.format("(%f, %f)", real, imag);
+		return ComplexCommonUtil.toString(m_real, m_imag);
 	}
 }

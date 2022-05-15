@@ -19,13 +19,12 @@ import org.csystem.util.wrapper.IntValue;
 class App {
 	public static void main(String[] args)
 	{
-		IntValue iv1 = IntValue.of(100);
-		IntValue iv2 = IntValue.of(100);
-		IntValue iv3 = IntValue.of(1000);
-		IntValue iv4 = IntValue.of(1000);
+		IntValue a = IntValue.of(23);
+		IntValue b = IntValue.of(4);
 
-		System.out.println(iv1 == iv2 ? "Aynı nesne" : "Farklı nesneler");
-		System.out.println(iv3 == iv4 ? "Aynı nesne" : "Farklı nesneler");
+		IntValue [] result = a.divideAndRemainder(b);
+
+		System.out.printf("%d, %d%n", result[0].getValue(), result[1].getValue());
 	}
 }
 
