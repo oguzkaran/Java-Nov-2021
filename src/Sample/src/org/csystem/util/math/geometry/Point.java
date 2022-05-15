@@ -1,66 +1,63 @@
 /*----------------------------------------------------------------
 	FILE		: Point.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 09.04.2022
+	LAST UPDATE	: 15.05.2022
 	
-	Point class that represents 2(two) dimensional point
+	Immutable Point class that represents 2(two) dimensional point
 	
 	Copyleft (c) 1993 C and System Programmers Association
 	All Rights Free
 ----------------------------------------------------------------*/
-
 package org.csystem.util.math.geometry;
 
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
-
 public class Point {
-	 public double x;
-	 public double y;
-	 
-	 public Point()
-	 {		 
-	 }
-	 
-	 public Point(double a)
-	 {
-		 x = a;
-	 }
-	 
-	 public Point(double a, double b)
-	 {
-		 x = a;
-		 y = b;
-	 }
-	 
-	 public double distance()
-	 {
-		 return distance(0, 0);		 		 
-	 }
-	 
-	 public double distance(Point other)
-	 {
-		 return distance(other.x, other.y);
-	 }
-	 
-	 public double distance(double a, double b)
-	 {
-		 return sqrt(pow(x - a, 2) + pow(y - b, 2));		 		 		 		 
-	 }
-	 
-	 public void offset(double dxy)
-	 {
-		 offset(dxy, dxy);
-	 }
-	 
-	 public void offset(double dx, double dy)
-	 {
-		 x += dx;
-		 y += dy;
-	 }	 
-	 
-	 public String toString() 
-	 {
-		 return String.format("(%f, %f)", x, y);
-	 }
+	private final double m_x;
+	private final double m_y;
+
+	public Point()
+	{
+		m_x = m_y = 0;
+	}
+
+	public Point(double x)
+	{
+	 	m_x = x;
+	 	m_y = 0;
+	}
+
+	public Point(double x, double y)
+	{
+		 m_x = x;
+		 m_y = y;
+	}
+
+	public double getX()
+	{
+		return m_x;
+	}
+
+	public double getY()
+	{
+		return m_y;
+	}
+
+	public double distance()
+	{
+		return distance(0, 0);
+	}
+
+	public double distance(Point other)
+	{
+		return distance(other.m_x, other.m_y);
+	}
+
+	public double distance(double x, double y)
+	{
+		return PointCommonUtil.distance(m_x, m_y, x, y);
+	}
+
+	public String toString()
+	{
+		return PointCommonUtil.toString(m_x, m_y);
+	}
 }
