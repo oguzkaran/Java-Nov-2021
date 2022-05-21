@@ -1,26 +1,21 @@
 package org.csystem.app.parser.studentinfo;
 
-import org.csystem.app.datetime.DateUtil;
+import org.csystem.util.datetime.Date;
 
 public class StudentInfoParser {
-    public StudentInfo studentInfo;
+    private final StudentInfo m_studentInfo;
 
-    public static String getBirthDate(String str)
+    private static Date getBirthDate(String str)
     {
         String [] birthDateInfo = str.split("[/]");
         int day = Integer.parseInt(birthDateInfo[0]);
         int month = Integer.parseInt(birthDateInfo[1]);
         int year = Integer.parseInt(birthDateInfo[2]);
 
-        return DateUtil.getDateTR(day, month, year);
+        return new Date(day, month, year);
     }
 
-    public StudentInfoParser(String str)
-    {
-        studentInfo = parse(str);
-    }
-
-    public static StudentInfo parse(String str)
+    private static StudentInfo parse(String str)
     {
         /*
             <isim>:<gg/aa/yyyy>:<ders adı>:<vize>:<final>
@@ -41,6 +36,15 @@ public class StudentInfoParser {
         studentInfo.setFinalGrade(Integer.parseInt(studentInfoStr[4]));
 
         return studentInfo;
+    }
+    public StudentInfoParser(String str)
+    {
+        m_studentInfo = parse(str);
+    }
+
+    public StudentInfo getStudentInfo()
+    {
+        return m_studentInfo;
     }
 
     //...

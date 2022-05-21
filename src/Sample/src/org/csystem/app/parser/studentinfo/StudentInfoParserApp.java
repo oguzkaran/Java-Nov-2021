@@ -34,7 +34,7 @@ public class StudentInfoParserApp {
             if ("elma".equals(str))
                 break;
 
-            System.out.println(new StudentInfoParser(str).studentInfo.toString());
+            System.out.println(new StudentInfoParser(str).getStudentInfo().toString());
         }
 
         System.out.println("Tekrar yapıyor musunuz?");

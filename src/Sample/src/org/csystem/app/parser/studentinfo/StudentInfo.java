@@ -1,8 +1,10 @@
 package org.csystem.app.parser.studentinfo;
 
+import org.csystem.util.datetime.Date;
+
 public class StudentInfo {
     private String m_name;
-    private String m_birthDate;
+    private Date m_birthDate;
     private String m_lectureName;
     private int m_midtermGrade;
     private int m_finalGrade;
@@ -21,12 +23,12 @@ public class StudentInfo {
         m_name = name;
     }
 
-    public String getBirthDate()
+    public Date getBirthDate()
     {
         return m_birthDate;
     }
 
-    public void setBirthDate(String birthDate)
+    public void setBirthDate(Date birthDate)
     {
         //...
         m_birthDate = birthDate;
@@ -76,6 +78,6 @@ public class StudentInfo {
 
         String fmt = "{\"name\": \"%s\", \"birthDate\": \"%s\", \"lectureName\": \"%s\", \"midterm\":%d, \"final\": %d, \"grade\": %f, \"status\": \"%s\"}";
 
-        return String.format(fmt, m_name, m_birthDate, m_lectureName, m_midtermGrade, m_finalGrade, grade, grade >= 50 ? "Geçti" : "Kaldı");
+        return String.format(fmt, m_name, m_birthDate.toLongDateStringTR(), m_lectureName, m_midtermGrade, m_finalGrade, grade, grade >= 50 ? "Geçti" : "Kaldı");
     }
 }

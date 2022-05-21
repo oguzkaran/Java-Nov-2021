@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: MutableComplex.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 15.05.2022
+	LAST UPDATE	: 21.05.2022
 	
 	MutableComplex class that represents a "Complex Number"
 	
@@ -116,6 +116,11 @@ public class MutableComplex {
 	public void dec()
 	{
 		dec(1);
+	}
+
+	public Complex toComplex()
+	{
+		return new Complex(m_real, m_imag);
 	}
 
 	public String toString()

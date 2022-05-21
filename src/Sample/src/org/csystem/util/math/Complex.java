@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Complex.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 15.05.2022
+	LAST UPDATE	: 21.05.2022
 	
 	Immutable Complex class that represents a "Complex Number"
 	
@@ -9,7 +9,6 @@
 	All Rights Free
 ----------------------------------------------------------------*/
 package org.csystem.util.math;
-
 
 public class Complex {
 	private final double m_real;
@@ -109,6 +108,11 @@ public class Complex {
 	public Complex dec()
 	{
 		return dec(1);
+	}
+
+	public MutableComplex toMutableComplex()
+	{
+		return new MutableComplex(m_real, m_imag);
 	}
 
 	public String toString()

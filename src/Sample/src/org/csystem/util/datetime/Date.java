@@ -11,6 +11,9 @@
 
 package org.csystem.util.datetime;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class Date {
     private static final int [] DAYS_OF_MONTHS = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     private static final String [] MONTHS_TR= {"", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
@@ -23,20 +26,6 @@ public class Date {
     private int m_month;
     private int m_year;
     private int m_dayOfWeek;
-
-    private static String getDateTR(int day, int month, int year)
-    {
-        int dayOfWeek = getDayOfWeek(day, month, year);
-
-        return String.format("%d %s %d %s", day, MONTHS_TR[month], year, DAYS_OF_WEEK_TR[dayOfWeek]);
-    }
-
-    private static String getDateEN(int day, int month, int year)
-    {
-        int dayOfWeek = getDayOfWeek(day, month, year);
-
-        return String.format("%d%s %s %d %s", day, getDaySuffix(day), MONTHS_EN[month], year, DAYS_OF_WEEK_EN[dayOfWeek]);
-    }
 
     private static String getDaySuffix(int day)
     {
@@ -127,10 +116,22 @@ public class Date {
         m_dayOfWeek = getDayOfWeek(m_day, m_month, m_year);
     }
 
+    public Date() //Burada yazılan kodların şu an bilinmesi gerekmez. Sadece default ctor'un anlamına odaklanınız
+    {
+        Calendar now = new GregorianCalendar();
+
+        set(now.get(Calendar.DAY_OF_MONTH), now.get(Calendar.MONTH) + 1, now.get(Calendar.YEAR));
+    }
+
     public Date(int day, int month, int year)
     {
         checkDate(day, month, year, String.format("Invalid date value(s) -> d: %d, m: %d, y: %d", day, month, year));
         set(day, month, year);
+    }
+
+    public int getDay()
+    {
+        return m_day;
     }
 
     public void setDay(int value)
@@ -142,6 +143,11 @@ public class Date {
         set(value, m_month, m_year);
     }
 
+    public int getMonth()
+    {
+        return m_month;
+    }
+
     public void setMonth(int value)
     {
         if (value == m_month)
@@ -149,6 +155,11 @@ public class Date {
 
         checkMonth(value, "Invalid month value: " + value);
         set(m_day, value, m_year);
+    }
+
+    public int getYear()
+    {
+        return m_year;
     }
 
     public void setYear(int value)
@@ -160,10 +171,63 @@ public class Date {
         set(m_day, m_month, value);
     }
 
-    public int getDayOfWeek()
+    public int getDayOfWeekValue()
     {
         return m_dayOfWeek;
     }
 
-    //...
+    public String getDayOfWeekTR()
+    {
+        return DAYS_OF_WEEK_TR[m_dayOfWeek];
+    }
+
+    public String getDayOfWeekEN()
+    {
+        return DAYS_OF_WEEK_EN[m_dayOfWeek];
+    }
+
+    public boolean isLeapYear()
+    {
+        return isLeapYear(m_year);
+    }
+
+    public boolean isWeekend()
+    {
+        return m_dayOfWeek == 0 || m_dayOfWeek == 6;
+    }
+
+    public boolean isWeekday()
+    {
+        return !isWeekend();
+    }
+
+    public String toString(char sep)
+    {
+        return String.format("%02d%c%02d%c%04d", m_day, sep, m_month, sep, m_year);
+    }
+
+    public String toString()
+    {
+        return toString('/');
+    }
+
+    public String toShortDateStringTR()
+    {
+        return String.format("%d %s %d", m_day, MONTHS_TR[m_month], m_year);
+    }
+
+    public String toShortDateStringEN()
+    {
+        return String.format("%d%s %s %d", m_day, getDaySuffix(m_day), MONTHS_EN[m_month], m_year);
+    }
+
+    public String toLongDateStringTR()
+    {
+        return String.format("%s %s", toShortDateStringTR(), getDayOfWeekTR());
+    }
+
+    public String toLongDateStringEN()
+    {
+        return String.format("%s %s", toShortDateStringEN(), getDayOfWeekEN());
+    }
 }

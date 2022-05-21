@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Point.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 15.05.2022
+	LAST UPDATE	: 21.05.2022
 	
 	Immutable Point class that represents 2(two) dimensional point
 	
@@ -54,6 +54,11 @@ public class Point {
 	public double distance(double x, double y)
 	{
 		return PointCommonUtil.distance(m_x, m_y, x, y);
+	}
+
+	public MutablePoint toMutablePoint()
+	{
+		return new MutablePoint(m_x, m_y);
 	}
 
 	public String toString()

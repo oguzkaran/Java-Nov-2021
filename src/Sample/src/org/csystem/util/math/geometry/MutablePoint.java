@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
-	FILE		: Point.java
+	FILE		: MutablePoint.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 15.05.2022
+	LAST UPDATE	: 21.05.2022
 	
 	MutablePoint class that represents 2(two) dimensional point
 	
@@ -78,6 +78,11 @@ public class MutablePoint {
  		m_x += dx;
  		m_y += dy;
  	}
+
+	public Point toPoint()
+	{
+		return new Point(m_x, m_y);
+	}
 
  	public String toString()
 	{
