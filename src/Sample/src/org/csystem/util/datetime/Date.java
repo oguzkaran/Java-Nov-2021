@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Date.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 21.05.2022
+	LAST UPDATE	: 22.05.2022
 
 	Date class that represents a local date
 
@@ -121,6 +121,12 @@ public class Date {
         Calendar now = new GregorianCalendar();
 
         set(now.get(Calendar.DAY_OF_MONTH), now.get(Calendar.MONTH) + 1, now.get(Calendar.YEAR));
+    }
+
+    public Date(int day, Month month, int year)
+    {
+        checkDate(day, month.ordinal() + 1, year, String.format("Invalid date value(s) -> d: %d, m: %s, y: %d", day, month.toString(), year));
+        set(day, month.ordinal() + 1, year);
     }
 
     public Date(int day, int month, int year)
