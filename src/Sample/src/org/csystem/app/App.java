@@ -1,19 +1,22 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Aşağıdaki durumda içi boş ()'ler geçerlidir. Hiç parantez konmaması ile aynı anlamdadır. Aslında aşağıdaki kullanım
-	ve parantezsiz kullanım, sabitlere ilişkin nesneler yaratılırken "default ctor" çağrılsın anlamındadır. Anımsanacağı
-	gibi bir sınıfa hiç bir ctor yazılmamaışsa derleyici default ctor'u içi boş ve public olarak yazar. enum sınıflar
-	için içi boş ve erişilemez olorak yazar.
+	Date sınıfı ve test kodu
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import org.csystem.util.datetime.Date;
+import org.csystem.util.datetime.Month;
 
 class App {
 	public static void main(String[] args)
 	{
+		Date birthDate = new Date(10, Month.SEP, 1976);
 
+		System.out.println(birthDate.toLongDateStringEN());
+		System.out.println(birthDate.getDayOfWeek().toString());
+
+		birthDate.setMonth(Month.MAY);
+
+		System.out.println(birthDate.toLongDateStringEN());
+		System.out.println(birthDate.getDayOfWeek().toString());
 	}
-}
-
-
-enum Color {
-	RED(), GREEN(), BLUE(), WHITE(), BLACK()
 }

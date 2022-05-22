@@ -21,6 +21,8 @@ public class Date {
     private static final String [] MONTHS_EN = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     private static final String [] DAYS_OF_WEEK_TR = {"Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"};
     private static final String [] DAYS_OF_WEEK_EN = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+    private static final DayOfWeek [] DAY_OF_WEEKS = DayOfWeek.values();
+    private static final Month [] MONTHS = Month.values();
 
     private int m_day;
     private int m_month;
@@ -149,12 +151,22 @@ public class Date {
         set(value, m_month, m_year);
     }
 
-    public int getMonth()
+    public Month getMonth()
+    {
+        return MONTHS[m_month - 1];
+    }
+
+    public void setMonth(Month month)
+    {
+        setMonthValue(month.ordinal() + 1);
+    }
+
+    public int getMonthValue()
     {
         return m_month;
     }
 
-    public void setMonth(int value)
+    public void setMonthValue(int value)
     {
         if (value == m_month)
             return;
@@ -177,9 +189,9 @@ public class Date {
         set(m_day, m_month, value);
     }
 
-    public int getDayOfWeekValue()
+    public DayOfWeek getDayOfWeek()
     {
-        return m_dayOfWeek;
+        return DAY_OF_WEEKS[m_dayOfWeek];
     }
 
     public String getDayOfWeekTR()
