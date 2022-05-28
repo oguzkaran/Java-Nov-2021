@@ -21,13 +21,13 @@ import org.csystem.util.datetime.Date;
 public class DateApp {
 	private static void displayDateTR(Date date)
 	{
-		System.out.println(date.toShortDateStringTR());
+		System.out.println(date.toLongDateStringTR());
 		System.out.println(date.isWeekend() ? "Bugün kurs var. Tekrar yaptınız mı?" : "Kurs günü yaklaşıyor. Tekrar yapmayı unutmayınız");
 	}
 
 	private static void displayDateEN(Date date)
 	{
-		System.out.println(date.toShortDateStringEN());
+		System.out.println(date.toLongDateStringEN());
 		System.out.println(date.isWeekend() ? "That is the course day. Did you review?" : "Course day is coming. Do not forget to review?");
 	}
 	public static void run()
