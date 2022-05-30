@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Complex.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 21.05.2022
+	LAST UPDATE	: 30.05.2022
 	
 	Immutable Complex class that represents a "Complex Number"
 	
@@ -16,13 +16,12 @@ public class Complex {
 
 	public Complex()
 	{
-		m_real = m_imag = 0;
+		this(0);
 	}
 
 	public Complex(double real)
 	{
-		m_real = real;
-		m_imag = 0;
+		this(real, 0);
 	}
 
 	public Complex(double real, double imag)

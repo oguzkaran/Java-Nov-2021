@@ -1,25 +1,20 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	super ctor sentaksı adından da anlaşaılacağı gibi yalnızca ctor içerisinde kullanılabilir
+	AnalyticalCircle sınıfı ve test kodu
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import org.csystem.util.math.geometry.AnalyticalCircle;
 
 class App {
 	public static void main(String[] args)
 	{
-		A x = new A(10);
+		AnalyticalCircle ac = new AnalyticalCircle(345.6, 8.9);
+
+		System.out.printf("(%f, %f)%n", ac.getX(), ac.getY());
+
+		ac.setCenter(23.89, 56.89);
+
+		System.out.printf("(%f, %f)%n", ac.getX(), ac.getY());
 	}
 }
 
-
-class A {
-	public A()
-	{
-		System.out.println("A.A()");
-	}
-
-	public A(int a)
-	{
-		System.out.println("A.A(int)");
-	}
-	//...
-}

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Point.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 21.05.2022
+	LAST UPDATE	: 30.05.2022
 	
 	Immutable Point class that represents 2(two) dimensional point
 	
@@ -16,13 +16,12 @@ public class Point {
 
 	public Point()
 	{
-		m_x = m_y = 0;
+		this(0);
 	}
 
 	public Point(double x)
 	{
-	 	m_x = x;
-	 	m_y = 0;
+	 	this(x, 0);
 	}
 
 	public Point(double x, double y)

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: MutableComplex.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 21.05.2022
+	LAST UPDATE	: 30.05.2022
 	
 	MutableComplex class that represents a "Complex Number"
 	
@@ -20,7 +20,7 @@ public class MutableComplex {
 
 	public MutableComplex(double a)
 	{
-		m_real = a;
+		this(a, 0);
 	}
 
 	public MutableComplex(double a, double b)

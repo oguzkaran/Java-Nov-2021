@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Time.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 21.05.2022
+	LAST UPDATE	: 30.05.2022
 
 	Time class that represents a local time
 
@@ -86,8 +86,6 @@ public class Time {
                     hour, minute, second, millisecond));
     }
 
-    //...
-
     public Time() //Burada yazılan kodların şu an bilinmesi gerekmez. Sadece default ctor'un anlamına odaklanınız
     {
         Calendar now = new GregorianCalendar();
@@ -96,6 +94,16 @@ public class Time {
         m_minute = now.get(Calendar.MINUTE);
         m_second = now.get(Calendar.SECOND);
         m_millisecond = now.get(Calendar.MILLISECOND);
+    }
+
+    public Time(int hour, int minute)
+    {
+        this(hour, minute, 0);
+    }
+
+    public Time(int hour, int minute, int second)
+    {
+        this(hour, minute, second, 0);
     }
 
     public Time(int hour, int minute, int second, int millisecond)

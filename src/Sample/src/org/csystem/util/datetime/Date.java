@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Date.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 28.05.2022
+	LAST UPDATE	: 30.05.2022
 
 	Date class that represents a local date
 
@@ -20,7 +20,6 @@ public class Date {
     private static final String [] DAYS_OF_WEEK_TR = {"Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"};
     private static final DayOfWeek [] DAY_OF_WEEKS = DayOfWeek.values();
     private static final Month [] MONTHS = Month.values();
-
     private int m_day;
     private int m_month;
     private int m_year;
@@ -124,8 +123,7 @@ public class Date {
 
     public Date(int day, Month month, int year)
     {
-        checkDate(day, month.ordinal() + 1, year, String.format("Invalid date value(s) -> d: %d, m: %s, y: %d", day, month.toString(), year));
-        set(day, month.ordinal() + 1, year);
+        this(day, month.ordinal() + 1, year);
     }
 
     public Date(int day, int month, int year)
