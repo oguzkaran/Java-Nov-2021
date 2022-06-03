@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: AnalyticalCircle.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 30.05.2022
+	LAST UPDATE	: 03.06.2022
 
 	AnalyticalCircle class that represents a Circle in cartesian
 	coordinates
@@ -84,6 +84,29 @@ public class AnalyticalCircle extends Circle {
     public void offset(double dxy)
     {
         offset(dxy, dxy);
+    }
+
+    public double centerDistance(AnalyticalCircle other)
+    {
+        return m_center.distance(other.m_center);
+    }
+
+    public boolean intersects(AnalyticalCircle other)
+    {
+        //TODO:
+        return true;
+    }
+
+    public boolean isInside(double x, double y)
+    {
+        //TODO:
+        return true;
+    }
+
+
+    public boolean isTangent(Line line)
+    {
+        return true;
     }
 
     //...
