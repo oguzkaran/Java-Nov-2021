@@ -4,7 +4,7 @@
 	LAST UPDATE	: 15.05.2022
 
 	Immutable IntValue class for wrapping an int value by using
-	cache for [-128, 17] closed interval value
+	cache for [-128, 127] closed interval value
 
 	Copyleft (c) 1993 C and System Programmers Association
 	All Rights Free
