@@ -1,6 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Boolean sınıfının valueOf metodu true ve false değerlerine ilişkin Boolean nesnelerinin referanslarını önbellekten
-	alır
+	final olarak bildirilmiş bir sınıftan türetme yapılamaz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 

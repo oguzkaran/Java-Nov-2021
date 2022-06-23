@@ -2,7 +2,6 @@ package org.csystem.app.randomgenerator;
 
 import org.csystem.util.array.ArrayUtil;
 import org.csystem.util.math.geometry.MutablePoint;
-import org.csystem.util.wrapper.IntValue;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -22,9 +21,20 @@ public class RandomObjectArrayGeneratorApp {
             String typeName = o.getClass().getName();
             System.out.printf("Dinmamik tür ismi:%s%n", typeName);
 
-            if (o instanceof IntValue i) {
-                System.out.println(i.getValue());
-                System.out.println(i.getValue() * 2);
+            if (o instanceof Integer) {
+                int a = (int)o;
+                System.out.println(a);
+                System.out.println(a * 2);
+            }
+            else if (o instanceof Double) {
+                double d = (double)o;
+                System.out.println(d);
+                System.out.println(d + 1);
+            }
+            else if (o instanceof Character) {
+                char c = (char)o;
+                System.out.println(c);
+                System.out.println(Character.toUpperCase(c));
             }
             else if (o instanceof MutablePoint p) {
                 System.out.println(p.toString());
