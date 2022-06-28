@@ -11,7 +11,7 @@
 ----------------------------------------------------------------*/
 package org.csystem.util.wrapper;
 
-public class LongValue {
+public final class LongValue {
     private static final int CACHE_MIN = -128;
     private static final int CACHE_MAX = 127;
     private static final LongValue[] ms_cache = new LongValue[CACHE_MAX - CACHE_MIN + 1];

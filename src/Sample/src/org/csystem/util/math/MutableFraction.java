@@ -1,47 +1,7 @@
-/*----------------------------------------------------------------------------------------------------------------------
-	Soru: Bir kesri temsil eden MutableFraction isimli aşağıdaki sınıfı yazınız
-	Açıklamalar:
-	- Sınıf Matematikteki  bir kesri temsil ettiğinden pay ve payda değerleri tutulacaktır
-
-	- Sınıfın ilgili set ve get metotları yazılacaktır
-
-	- Pay'ın sıfırdan farklı, paydanın sıfır olması durumunda tanımsızlığa ilişkin bir mesaj verilecektir, pay ve paydanın
-	her ikisinin birden sıfır olması durumunda belirliğe ilişkin mesaj verilecektir. Her iki durumda da program
-	sonlandırılacaktır
-
-	- Kesir he durumda sadeleşmiş bir biçimde tutulacaktır. Örneğin kesrin pay ve paydası sırasıyla 4 ve 18 olarak
-	verildiğinde kesir 2 / 9 olarak tutulacaktır.
-
-	- Kesir negatif ise işaret payda bulunacaktır. Örneğin kesin pay ve paydası sırasıyla 3 ve -4 olarak verilmişse
-	kesir -3 / 4 biçiminde tutulacaktır
-
-	- Kesrin pay ve paydasının ikisinin birden negatif olması durumunda kesir pozitif olarak tutulacaktır
-
-	- Kesrin payının sıfır olması durumunda payda ne olursa olsun 1(bir) yapılacaktır
-
-	- Sınıfın iki kesri toplayan, bir kesir ile bir tamsayıyı toplayan aşağıdaki gibi metotları olacaktır. Aynı işlemler
-	 çıkarma, çarpma ve bölme için de yapılacaktır
-
-	- Sınıfın kesri 1(bir) artıran ve bir azaltan inc ve dec metotları yazılacaktır
-
-	- Sınıfın toString metodu şu formatta yazı döndürecektir:
-	    3 / 10 kesri için -> 3 / 10 = 3.33
-	    10 / 1 kesri için -> 10 / 1
-
-	 - Bu sınıf için ayrıca Fraction isimli immutable versiyonunu da yazınız
-
-	 - Her iki sınıfa da birbirlerine dönüştürülebilen toXXX metotları eklenecfektir. Örneğin MutableFraction
-	 sınıfına toFraction metodu Fraction sınıfına toMutableFraction metodu eklenecektir:
-	    public Fraction toFraction();
-	    public MutableFraction toMutableFraction();
-
-	 - Sınıfın public bölümünü değiştirmeden istediğiniz değişikliği ve eklemeleri yapabilirsiniz
-----------------------------------------------------------------------------------------------------------------------*/
-
 /*----------------------------------------------------------------------
 	FILE        : MutableFraction.java
 	AUTHOR      : Java-Nov-2021 Group
-	LAST UPDATE : 21.05.2022
+	LAST UPDATE : 28.06.2022
 
 	MutableFraction class that represents fraction in mathematics
 
@@ -53,6 +13,77 @@ package org.csystem.util.math;
 public class MutableFraction {
     private int m_a;
     private int m_b;
+
+    private static MutableFraction add(int a1, int b1, int a2, int b2)
+    {
+        return new MutableFraction(a1 * b2 + a2 * b1, b1 * b2);
+    }
+
+    private static MutableFraction subtract(int a1, int b1, int a2, int b2)
+    {
+        return add(a1, b1, -a2, b2);
+    }
+
+    private static MutableFraction multiply(int a1, int b1, int a2, int b2)
+    {
+        return new MutableFraction(a1 * a2, b1 * b2);
+    }
+
+    private static MutableFraction divide(int a1, int b1, int a2, int b2)
+    {
+        return multiply(a1, b1, b2, a2);
+    }
+
+    private static void check(double a, double b)
+    {
+        if (b == 0) {
+            if (a == 0)
+                System.out.println("Indeterminate");
+            else
+                System.out.println("Undefined");
+
+            System.exit(1); //Exception konusauna kadar sabredin
+        }
+    }
+
+    private void simplify()
+    {
+        int min = Math.min(Math.abs(m_a), m_b);
+
+        for (int i = min; i > 1; --i)
+            if (m_a % i == 0 && m_b % i == 0) {
+                m_a /= i;
+                m_b /= i;
+                break;
+            }
+    }
+
+    private void setValues(int a, int b)
+    {
+        m_a = a;
+        m_b = b;
+    }
+
+    private void setSign()
+    {
+        if (m_b < 0) {
+            m_a = -m_a;
+            m_b = -m_b;
+        }
+    }
+
+    private void set(int a, int b)
+    {
+        if (a == 0) {
+            m_a = 0;
+            m_b = 1;
+            return;
+        }
+
+        setValues(a, b);
+        setSign();
+        simplify();
+    }
 
     public MutableFraction()
     {
@@ -67,7 +98,8 @@ public class MutableFraction {
 
     public MutableFraction(int a, int b)
     {
-        //...
+        check(a, b);
+        set(a, b);
     }
 
     public int getNumerator()
@@ -77,7 +109,7 @@ public class MutableFraction {
 
     public void setNumerator(int a)
     {
-        //...
+        set(a, m_b);
     }
 
     public int getDenominator()
@@ -87,7 +119,8 @@ public class MutableFraction {
 
     public void setDenominator(int b)
     {
-        //...
+        check(m_a, b);
+        set(m_a, b);
     }
 
     public double getRealValue()
@@ -98,93 +131,79 @@ public class MutableFraction {
     //add methods
     public static MutableFraction add(int val, MutableFraction f)
     {
-        //...
-
-        return new MutableFraction();
+        return add(val, 1, f.m_a, f.m_b);
     }
 
     public MutableFraction add(MutableFraction other)
     {
-        //...
-        return new MutableFraction();
+        return add(m_a, m_b, other.m_a, other.m_b);
     }
 
     public MutableFraction add(int val)
     {
-        //...
-        return new MutableFraction();
+        return add(m_a, m_b, val, 1);
     }
 
     //subtract methods
     public static MutableFraction subtract(int val, MutableFraction f)
     {
-        //...
-        return new MutableFraction();
+        return subtract(val, 1, f.m_a, f.m_b);
     }
 
     public MutableFraction subtract(MutableFraction other)
     {
-        //...
-        return new MutableFraction();
+        return subtract(m_a, m_b, other.m_a, other.m_b);
     }
 
     public MutableFraction subtract(int val)
     {
-        //...
-        return new MutableFraction();
+        return subtract(m_a, m_b, val, 1);
     }
 
     //multiply methods
     public static MutableFraction multiply(int val, MutableFraction f)
     {
-        //...
-        return new MutableFraction();
+        return multiply(val, 1, f.m_a, f.m_b);
     }
 
     public MutableFraction multiply(MutableFraction other)
     {
-        //...
-        return new MutableFraction();
+        return multiply(m_a, m_b, other.m_a, other.m_b);
     }
 
     public MutableFraction multiply(int val)
     {
-        //...
-        return new MutableFraction();
+        return multiply(m_a, m_b, val, 1);
     }
 
     //divide methods
     public static MutableFraction divide(int val, MutableFraction f)
     {
-        //...
-        return new MutableFraction();
+        return divide(val, 1, f.m_a, f.m_b);
     }
 
     public MutableFraction divide(MutableFraction other)
     {
-        //...
-        return new MutableFraction();
+        return divide(m_a, m_b, other.m_a, other.m_b);
     }
 
     public MutableFraction divide(int val)
     {
-        //...
-        return new MutableFraction();
+        return divide(m_a, m_b, val, 1);
     }
 
     public void inc()
     {
-        //...
+        m_a += m_b;
     }
 
     public void dec()
     {
-        //...
+        m_a -= m_b;
     }
 
     public String toString()
     {
-        //...
-        return "";
+        return String.format("%d%s", m_a, m_b != 1 ? " / " + m_b + " = " + getRealValue() : "");
     }
 }

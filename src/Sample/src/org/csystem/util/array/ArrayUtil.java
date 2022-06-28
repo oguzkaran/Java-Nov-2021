@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: ArrayUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 24.06.2022
+	LAST UPDATE	: 28.06.2022
 
 	Utility class for array operations
 
