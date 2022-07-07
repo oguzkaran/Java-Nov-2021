@@ -106,6 +106,7 @@ public class AnalyticalCircle extends Circle {
 
     public boolean isTangent(Line line)
     {
+        //TODO:
         return true;
     }
 
