@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Date.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 30.05.2022
+	LAST UPDATE	: 13.07.2022
 
 	Date class that represents a local date
 
@@ -118,7 +118,7 @@ public class Date {
     {
         Calendar now = new GregorianCalendar();
 
-        set(now.get(Calendar.DAY_OF_MONTH), now.get(Calendar.MONTH) + 1, now.get(Calendar.YEAR));
+        this.set(now.get(Calendar.DAY_OF_MONTH), now.get(Calendar.MONTH) + 1, now.get(Calendar.YEAR));
     }
 
     public Date(int day, Month month, int year)
@@ -129,7 +129,7 @@ public class Date {
     public Date(int day, int month, int year)
     {
         checkDate(day, month, year, String.format("Invalid date value(s) -> d: %d, m: %d, y: %d", day, month, year));
-        set(day, month, year);
+        this.set(day, month, year);
     }
 
     public int getDay()
@@ -143,7 +143,7 @@ public class Date {
             return;
 
         checkDay(value, "Invalid day value: " + value);
-        set(value, m_month, m_year);
+        this.set(value, m_month, m_year);
     }
 
     public Month getMonth()
@@ -153,7 +153,7 @@ public class Date {
 
     public void setMonth(Month month)
     {
-        setMonthValue(month.ordinal() + 1);
+        this.setMonthValue(month.ordinal() + 1);
     }
 
     public int getMonthValue()
@@ -167,7 +167,7 @@ public class Date {
             return;
 
         checkMonth(value, "Invalid month value: " + value);
-        set(m_day, value, m_year);
+        this.set(m_day, value, m_year);
     }
 
     public int getYear()
@@ -181,7 +181,7 @@ public class Date {
             return;
 
         checkYear(value, "Invalid year value: " + value);
-        set(m_day, m_month, value);
+        this.set(m_day, m_month, value);
     }
 
     public DayOfWeek getDayOfWeek()
@@ -211,7 +211,7 @@ public class Date {
 
     public boolean isWeekday()
     {
-        return !isWeekend();
+        return !this.isWeekend();
     }
 
     public String toString(char sep)
@@ -221,7 +221,7 @@ public class Date {
 
     public String toString()
     {
-        return toString('/');
+        return this.toString('/');
     }
 
     public String toShortDateStringTR()
@@ -236,11 +236,11 @@ public class Date {
 
     public String toLongDateStringTR()
     {
-        return String.format("%s %s", toShortDateStringTR(), getDayOfWeekTR());
+        return String.format("%s %s", this.toShortDateStringTR(), getDayOfWeekTR());
     }
 
     public String toLongDateStringEN()
     {
-        return String.format("%s %s", toShortDateStringEN(), getDayOfWeekEN());
+        return String.format("%s %s", this.toShortDateStringEN(), getDayOfWeekEN());
     }
 }

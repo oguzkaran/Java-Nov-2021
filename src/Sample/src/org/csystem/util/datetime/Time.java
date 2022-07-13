@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Time.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 30.05.2022
+	LAST UPDATE	: 13.07.2022
 
 	Time class that represents a local time
 
@@ -164,13 +164,14 @@ public class Time {
     {
         if (value == m_millisecond)
             return;
+
         checkForMillisecond(value);
         m_millisecond = value;
     }
 
     public String toString()
     {
-        return String.format("%s:%02d", toShortTimeString(), m_second);
+        return String.format("%s:%02d", this.toShortTimeString(), m_second);
     }
 
     public String toShortTimeString()
@@ -180,6 +181,6 @@ public class Time {
 
     public String toLongTimeString()
     {
-        return String.format("%s.%03d", toString(), m_millisecond);
+        return String.format("%s.%03d", this.toString(), m_millisecond);
     }
 }
