@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: StringUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 28.06.2022
+	LAST UPDATE	: 16.07.2022
 	
 	Utility class for string operations
 	
@@ -12,6 +12,7 @@ package org.csystem.util.string;
 
 import org.csystem.util.array.ArrayUtil;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public final class StringUtil {
@@ -205,7 +206,7 @@ public final class StringUtil {
 		String str = "";
 
 		for (String value : s)
-			str += s + delimiter;
+			str += value + delimiter;
 
 		return str.substring(0, str.length() - delimiter.length());
 	}
@@ -213,6 +214,21 @@ public final class StringUtil {
 	public static String join(String [] s, char delimiter)
 	{
 		return join(s, delimiter + "");
+	}
+
+	public static String join(ArrayList list, char delimiter)
+	{
+		return join(list, delimiter + "");
+	}
+
+	public static String join(ArrayList list, String delimiter)
+	{
+		String str = "";
+
+		for (Object o : list)
+			str += (String)o + delimiter;
+
+		return str.substring(0, str.length() - delimiter.length());
 	}
 
 	public static boolean isPangramTR(String s)
