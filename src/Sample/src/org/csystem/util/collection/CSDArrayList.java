@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: CSDArrayList.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 16.07.2022
+	LAST UPDATE	: 17.07.2022
 
 	CSDArrayList class that represents dynamic array
 
@@ -81,6 +81,19 @@ public class CSDArrayList {
         return m_objs.length;
     }
 
+    public void clear()
+    {
+        for (int i = 0; i < m_index; ++i)
+            m_objs[i] = null;
+
+        m_index = 0;
+    }
+
+    public void ensureCapacity(int minCapacity)
+    {
+        if (minCapacity > m_objs.length)
+            changeCapacity(Math.max(m_objs.length * 2, minCapacity));
+    }
 
     public Object get(int index)
     {
@@ -109,4 +122,22 @@ public class CSDArrayList {
         return m_index;
     }
 
+    public Object remove(int index)
+    {
+        checkIndex(index);
+        Object old = m_objs[index];
+
+        //TODO:
+
+
+        m_objs[m_index--] = null; // Bu da yapılmazsa memory leak oluşabilir
+
+        return old;
+    }
+
+    public void trimToSize()
+    {
+        if (m_objs.length != m_index)
+            changeCapacity(m_index);
+    }
 }

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Date.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 13.07.2022
+	LAST UPDATE	: 17.07.2022
 
 	Date class that represents a local date
 
@@ -15,11 +15,18 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Date {
-    private static final String [] MONTHS_TR= {"", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
-            "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"};
-    private static final String [] DAYS_OF_WEEK_TR = {"Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"};
-    private static final DayOfWeek [] DAY_OF_WEEKS = DayOfWeek.values();
-    private static final Month [] MONTHS = Month.values();
+    private static final String [] MONTHS_TR;
+    private static final String [] DAYS_OF_WEEK_TR;
+    private static final DayOfWeek [] DAY_OF_WEEKS;
+    private static final Month [] MONTHS;
+
+    static {
+        MONTHS_TR= new String[]{"", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"};
+        DAYS_OF_WEEK_TR = new String[]{"Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"};
+        DAY_OF_WEEKS = DayOfWeek.values();
+        MONTHS = Month.values();
+    }
+
     private int m_day;
     private int m_month;
     private int m_year;

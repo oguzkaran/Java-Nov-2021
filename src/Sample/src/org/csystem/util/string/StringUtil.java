@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: StringUtil.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 16.07.2022
+	LAST UPDATE	: 17.07.2022
 	
 	Utility class for string operations
 	
@@ -16,10 +16,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public final class StringUtil {
-	private static final String ms_alphabetTR = "abcçdefgğhıijklmnoöprsştuüvyz";
-	private static final String ms_alphabetEN = "abcdefghijklmnopqrstuwxvyz";
-	private static final String ms_alphabetAllTR = ms_alphabetTR + "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
-	private static final String ms_alphabetAllEN = ms_alphabetEN + "ABCDEFGHIJKLMNOPQRSTUWXVYZ";
+	private static final String ms_alphabetTR;
+	private static final String ms_alphabetEN;
+	private static final String ms_alphabetAllTR;
+	private static final String ms_alphabetAllEN;
+
+	static {
+		ms_alphabetTR = "abcçdefgğhıijklmnoöprsştuüvyz";
+		ms_alphabetEN = "abcdefghijklmnopqrstuwxvyz";
+		ms_alphabetAllTR = ms_alphabetTR + "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+		ms_alphabetAllEN = ms_alphabetEN + "ABCDEFGHIJKLMNOPQRSTUWXVYZ";
+	}
 
 	private StringUtil()
 	{}
