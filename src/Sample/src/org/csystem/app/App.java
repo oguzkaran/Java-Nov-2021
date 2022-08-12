@@ -1,44 +1,26 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Java'da exception sınıfları kategori olarak iki gruba ayrılır: checked, unchecked
-
+	checked exception sınıfı türünden parametreli bir catch bloğunun ait olduğu try bloğunda o checked exception türüne
+	ilişkin nesneyi fırlatabilecek bir akış bulunmalıdır. Aksi durumda error oluşur
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import java.util.Scanner;
+import org.csystem.util.console.Console;
 
 class App {
 	public static void main(String[] args)
 	{
-		try {
-			LogarithmApp.run();
-		}
-		catch (WrapperException ex) {
-			System.out.println(ex.getMessage());
-		}
-		finally {
-			System.out.println("main: finally");
-		}
-
-		System.out.println("Tekrar yapıyor musunuz?");
+		
 	}
 }
 
 class LogarithmApp {
-	public static void run()
+	public static void run() throws UndefinedException, IndeterminateException
 	{
 		try {
-			Scanner kb = new Scanner(System.in);
-			System.out.print("Bir sayı giriniz:");
-			double a = Double.parseDouble(kb.nextLine());
+			double a = Console.readDouble("Bir sayı giriniz:", "Hatalı giril yapıldı!...");
 			double result = MathUtil.log10(a);
 
 			System.out.printf("Result:%f%n", result);
-		}
-		catch (NumberFormatException ex) {
-			throw new WrapperException("Invalid Value");
-		}
-		catch (MathResultException ex) {
-			throw new WrapperException("Problem occured", ex);
 		}
 		finally {
 			System.out.println("LogarithmApp.run:: finally");
@@ -48,35 +30,14 @@ class LogarithmApp {
 	}
 }
 
-
-class WrapperException extends RuntimeException {
-	public WrapperException(String message, Throwable cause)
-	{
-		super(message, cause);
-	}
-
-	public WrapperException(String message)
-	{
-		this(message, null);
-	}
-
-	public String getMessage()
-	{
-		Throwable cause = getCause();
-
-		return String.format("Message:%s%s", super.getMessage(),
-				cause == null ? "" : String.format(", Cause:%s, Cause Message:%s", cause.getClass().getName(), cause.getMessage()));
-	}
-}
-
 class MathUtil {
-	public static double log10(double a)
+	public static double log10(double a) throws UndefinedException, IndeterminateException
 	{
 		if (a == 0)
-			throw new MathResultException("Undefined", MathStatus.NEGATIVE_INFINITY);
+			throw new UndefinedException("Undefined");
 
 		if (a < 0)
-			throw new MathResultException("Indeterminate", MathStatus.NAN);
+			throw new IndeterminateException("Indeterminate");
 
 		return Math.log10(a);
 	}
@@ -84,7 +45,21 @@ class MathUtil {
 
 enum MathStatus {NAN, POSITIVE_INFINITY, NEGATIVE_INFINITY, POSITIVE_ZERO, NEGATIVE_ZERO,}
 
-class MathResultException extends RuntimeException {
+class UndefinedException extends MathResultException {
+	public UndefinedException(String message)
+	{
+		super(message, MathStatus.NEGATIVE_ZERO);
+	}
+}
+
+class IndeterminateException extends MathResultException {
+	public IndeterminateException(String message)
+	{
+		super(message, MathStatus.NAN);
+	}
+}
+
+class MathResultException extends Exception {
 	private final MathStatus m_mathStatus;
 
 	public MathResultException(String message, MathStatus mathStatus)
@@ -103,4 +78,3 @@ class MathResultException extends RuntimeException {
 		return String.format("Message:%s, Status:%s", super.getMessage(), m_mathStatus);
 	}
 }
-
