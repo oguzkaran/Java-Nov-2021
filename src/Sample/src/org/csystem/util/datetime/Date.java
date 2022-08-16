@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Date.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 17.07.2022
+	LAST UPDATE	: 16.08.2022
 
 	Date class that represents a local date
 
@@ -88,8 +88,7 @@ public class Date {
 
     private static void doWorkForException(String message)
     {
-        System.out.println(message);
-        System.exit(1); //Exception işlemleri konusuna kadar sabredin
+        throw new DateTimeException(message);
     }
 
     private static void checkDate(int day, int month, int year, String errMessage)

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Time.java
 	AUTHOR		: Java-Nov-2021 Group
-	LAST UPDATE	: 13.07.2022
+	LAST UPDATE	: 16.08.2022
 
 	Time class that represents a local time
 
@@ -21,8 +21,7 @@ public class Time {
 
     private static void doWorkForException(String message)
     {
-        System.out.println(message);
-        System.exit(1); //Exception işlemleri konusuna kadar sabredin
+        throw new DateTimeException(message);
     }
 
     private static boolean isValid(int value, int bound)
