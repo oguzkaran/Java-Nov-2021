@@ -1,61 +1,86 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Soyut bir tür ne zaman interface, ne zaman abstract sınıf yapılmalıdır? Programcı buna nasıl karar verecektir?
-	Önce interface düşünülmeli, interface özellikleri yazacağınız türü karşılamıyorsa (abstract) sınıf yazılmalıdır
-
-	interface yapılabildiği yerde abstract sınıf yerine interface yapılması, bu interface'i destekleyen bir sınıfın
-	başka bir sınıftan da türetilmesi olanağını sağlar. Aynı zamanda okunabilirlik/algılanabilirlik de artırılmış olur
+	Aşağıdaki örneği inceleyiniz
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import java.io.Closeable;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Random;
 
 class App {
 	public static void main(String[] args)
 	{
-		Mample m = new Mample();
-		A a = new A();
-		B b = new B();
-
-		m.doWorkForIX(a);
-		m.doWorkForIX(b);
+		Connection con = new Connection("postgresql:jdbc://localhost:5432/weatherinfodb");
+		Image image = new Image("marmaris.png");
+		Util.doWork(con, image);
 	}
 }
 
-class Mample {
-	public void doWorkForIX(IX ix)
+class Util {
+	public static void doWork(Connection con, Image image)
+	{
+		try (con; image) { // Since Java 9
+			con.doWork();
+			image.doFilter();
+		}
+		catch (Throwable ex) {
+			System.out.printf("Message:%s%n", ex.getMessage());
+		}
+	}
+}
+
+class Connection implements Closeable {
+	private final String m_url;
+
+	public Connection(String url)
 	{
 		//...
-		ix.foo();
-		ix.bar();
+		m_url = url;
+		System.out.printf("Connected to:%s%n", m_url);
+	}
+
+	public void doWork()
+	{
+		Random r = new Random();
+
+		//...
+
+		if (r.nextBoolean())
+			throw new IllegalStateException("Illegal state");
+
+		System.out.printf("Working on connection at '%s'%n", m_url);
+	}
+
+	public void close() throws IOException
+	{
+		System.out.println("Disconnected");
 	}
 }
 
-class B implements IX {
-	public void foo()
-	{
-		System.out.println("B.foo");
-	}
-}
 
+class Image implements Closeable {
+	private final String m_filename;
 
-class A implements IX {
-	public void foo()
-	{
-		System.out.println("A.foo");
-	}
-}
-
-interface IX {
-	default void foo()
-	{
-		throw new UnsupportedOperationException();
-	}
-
-	default void bar()
-	{
-		throw new UnsupportedOperationException();
-	}
-
-	default void tar()
+	public Image(String filename)
 	{
 		//...
+		m_filename = filename;
+	}
+
+	public void doFilter()
+	{
+		Random r = new Random();
+
+		//...
+
+		if (r.nextBoolean())
+			throw new ArithmeticException("Invalid operation for pixel");
+
+		System.out.printf("Working on image '%s'%n", m_filename);
+	}
+	public void close()
+	{
+		System.out.println("Image released");
 	}
 }
