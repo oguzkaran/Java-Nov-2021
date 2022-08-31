@@ -3,84 +3,36 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import java.io.Closeable;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import org.csystem.util.array.ArrayUtil;
+
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 class App {
 	public static void main(String[] args)
 	{
-		Connection con = new Connection("postgresql:jdbc://localhost:5432/weatherinfodb");
-		Image image = new Image("marmaris.png");
-		Util.doWork(con, image);
-	}
-}
-
-class Util {
-	public static void doWork(Connection con, Image image)
-	{
-		try (con; image) { // Since Java 9
-			con.doWork();
-			image.doFilter();
-		}
-		catch (Throwable ex) {
-			System.out.printf("Message:%s%n", ex.getMessage());
-		}
-	}
-}
-
-class Connection implements Closeable {
-	private final String m_url;
-
-	public Connection(String url)
-	{
-		//...
-		m_url = url;
-		System.out.printf("Connected to:%s%n", m_url);
-	}
-
-	public void doWork()
-	{
+		Scanner kb = new Scanner(System.in);
 		Random r = new Random();
+		ArrayList<ArrayList<Integer>> list = new ArrayList<>();
 
-		//...
+		System.out.print("Bir sayı giriniz:");
+		int count = Integer.parseInt(kb.nextLine());
 
-		if (r.nextBoolean())
-			throw new IllegalStateException("Illegal state");
+		while (count-- > 0) {
+			ArrayList<Integer> iList = new ArrayList<>();
+			for (int a : ArrayUtil.getRandomArray(r, r.nextInt(5, 15), 0, 99))
+				iList.add(a);
 
-		System.out.printf("Working on connection at '%s'%n", m_url);
-	}
+			list.add(iList);
+		}
 
-	public void close() throws IOException
-	{
-		System.out.println("Disconnected");
-	}
-}
+		for (ArrayList<Integer> iList : list) {
+			for (int a : iList)
+				System.out.printf("%d ", a);
 
-
-class Image implements Closeable {
-	private final String m_filename;
-
-	public Image(String filename)
-	{
-		//...
-		m_filename = filename;
-	}
-
-	public void doFilter()
-	{
-		Random r = new Random();
-
-		//...
-
-		if (r.nextBoolean())
-			throw new ArithmeticException("Invalid operation for pixel");
-
-		System.out.printf("Working on image '%s'%n", m_filename);
-	}
-	public void close()
-	{
-		System.out.println("Image released");
+			System.out.println();
+		}
 	}
 }
+
