@@ -1,38 +1,38 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Aşağıdaki örneği inceleyiniz
+	Aşağıdaki 3 ve 4 numaralı çağrılarda açılım belirtilmiş olsa da tam uyumlu metotlar seçilir. Bu işlem generic
+	bir işin türe özgü olarak özelleştirilmesi durumlarında kullanılır
 ----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
-
-import org.csystem.util.array.ArrayUtil;
-
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
 
 class App {
 	public static void main(String[] args)
 	{
-		Scanner kb = new Scanner(System.in);
-		Random r = new Random();
-		ArrayList<ArrayList<Integer>> list = new ArrayList<>();
-
-		System.out.print("Bir sayı giriniz:");
-		int count = Integer.parseInt(kb.nextLine());
-
-		while (count-- > 0) {
-			ArrayList<Integer> iList = new ArrayList<>();
-			for (int a : ArrayUtil.getRandomArray(r, r.nextInt(5, 15), 0, 99))
-				iList.add(a);
-
-			list.add(iList);
-		}
-
-		for (ArrayList<Integer> iList : list) {
-			for (int a : iList)
-				System.out.printf("%d ", a);
-
-			System.out.println();
-		}
+		Sample.foo("ankara"); //1
+		Sample.foo(2); //2
+		Sample.<String>foo("ankara"); //3
+		Sample.<Integer>foo(34); //4
+		Sample.foo(3.4); //5
 	}
 }
 
+class Sample {
+	public static <T> void foo(T t)
+	{
+		System.out.println("foo(T)");
+	}
+
+	public static void foo(String s)
+	{
+		System.out.println("foo(String)");
+	}
+
+	public static void foo(int val)
+	{
+		System.out.println("foo(int)");
+	}
+
+	public static void foo(Integer val)
+	{
+		System.out.println("foo(Integer)");
+	}
+}
