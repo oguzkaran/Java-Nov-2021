@@ -66,7 +66,7 @@ public class CSDArrayList<E> {
         return true;
     }
 
-    public void add(int index, Object elem)
+    public void add(int index, E elem)
     {
         if (m_elems.length == m_index)
             changeCapacity(m_elems.length == 0 ? 1 : m_elems.length * 2);
@@ -105,10 +105,10 @@ public class CSDArrayList<E> {
         return m_index == 0;
     }
 
-    public Object set(int index, E elem)
+    public E set(int index, E elem)
     {
         checkIndex(index);
-        Object old = m_elems[index];
+        E old = m_elems[index];
 
         m_elems[index] = elem;
 
@@ -120,10 +120,10 @@ public class CSDArrayList<E> {
         return m_index;
     }
 
-    public Object remove(int index)
+    public E remove(int index)
     {
         checkIndex(index);
-        Object old = m_elems[index];
+        E old = m_elems[index];
 
         //TODO:
 
